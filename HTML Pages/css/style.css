@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Bahnschrift';
+}
+
+@font-face {
+    font-family: "Bahnschrift";
+    src: url("fonts/bahnschrift._semibold.tff")
+}
+
+@font-face {
+    font-family: "Bahnschrift";
+    src: url("fonts/bahnschrift._bold.tff")
+}
+
+@font-face {
+    font-family: "Bahnschrift";
+    src: url("fonts/bahnschrift._light.tff")
+}
+
+@font-face {
+    font-family: "Bahnschrift";
+    src: url("fonts/bahnschrift._reg.tff")
+}
+
+/* Menu */
+
+#top-bar {
+    display: flex;
+    height: 72px;
+}
+
+#logo {
+    flex: 1;
+}
+
+.logo-img img {
+    height: 50px;
+}
+
+#menu {
+    flex: 1;
+}
+
+#menu ul {
+    list-style-type: none;
+    
+    justify-content: space-between;
+}
+
+/* #menu ul li {
+
+} */
+
+#menu ul li a {
+    text-decoration: none;
+}
+
+/* Tricks */
+.flex-container {
+    display: flex;
+}
