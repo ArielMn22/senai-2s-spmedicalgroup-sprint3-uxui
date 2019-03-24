@@ -1,5 +1,5 @@
 body {
-    background-image: url("../imgs/hospital\ lobby.jpg");
+    background-image: url("../imgs/lobby-green.jpg");
     background-size: cover;
 }
 
@@ -16,4 +16,5 @@ body {
 #banner h1 {
     font-size: 5em;
     color: white;
+    font-weight: 300;
 }

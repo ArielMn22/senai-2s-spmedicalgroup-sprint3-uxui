@@ -134,20 +134,7 @@
     position: relative;
 }
 
-.text-round {
-    position: relative;
-}
-
-#text-round:focus + .inpt-label {
-    transform: translateY(-30px) scale(0.9);
-    color: black;
-}
-
-#text-round:not(:placeholder-shown) + .inpt-label {
-    transform: translateY(-30px) scale(0.9);
-    color: black;
-}
-
+/* Inputs */
 .inpt-round input, .select-round select, .text-round textarea {
     position: relative;
     /* border: none; */
@@ -160,17 +147,19 @@
     font-size: 1.4em;
     resize: none;
     font-weight: 300;
+    transition: all .3s;
 }
 
-/* .select-round select {
-    position: relative;
-    border: none;
-    box-shadow: 4px 4px 4px #ccc;
-    border-radius: 100px;
-    text-indent: 10px;
-} */
+.inpt-round input:focus, .select-round select:focus, .text-round textarea:focus {
+    border: 1px solid green;
+}
 
-.inpt-label, .select-round span {
+.inpt-round input:focus, .select-round select:focus, .text-round textarea:focus {
+    border: 1px solid green;
+}
+
+/* Labels */
+.inpt-label, .select-label, .text-label{
     position: absolute;
     left: 10px;
     z-index: 10;
@@ -180,6 +169,7 @@
     font-size: 1.4em;
 }
 
+/* Input transition */
 #inpt-round:focus + .inpt-label {
     transform: translateY(-30px) scale(0.9);
     color: black;
@@ -190,17 +180,32 @@
     color: black;
 }
 
+
 .select-round {
     position: relative;
 }
 
-.select-round span {
+.select-label {
     font-size: calc(1.4em * 0.9);
 }
 
 #select-round + span {
     transform: translateY(-30px) scale(1);
-} 
+}
+
+.text-round {
+    position: relative;
+}
+
+#text-round:focus + .text-label {
+    transform: translateY(-30px) scale(0.9);
+    color: black;
+}
+
+#text-round:not(:placeholder-shown) + .text-label {
+    transform: translateY(-30px) scale(0.9);
+    color: black;
+}
 
 /* Paddings */
 .pa-all-g {
