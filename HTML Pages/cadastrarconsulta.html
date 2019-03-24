@@ -1,31 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastrar Consulta - SP Medical Group</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastrarconsulta.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
+
 <body>
     <header>
-        <nav id="top-bar">
+        <nav id="top-bar" class="degrade">
             <div id="logo" class="flex-container">
-                <div class="logo-img">
-                    <img src="imgs/SP Medical Group - logo.png" alt="">
-                </div>
+                <a href="index.html">
+                    <div class="logo-img">
+                        <img src="imgs/SP Medical Group - logo.png" alt="">
+                    </div>
+                </a>
 
                 <p>SP Medical Group</p>
             </div>
             <div id="menu">
                 <ul class="flex-container">
-                    <li><a href="">HOME</a></li>
-                    <li><a href="">SOBRE NÓS</a></li>
-                    <li><a href="">CONTATO</a></li>
-                    <li><a href="">LOGIN</a></li>
+                    <li><a href=""><i class="fas fa-home"></i>Home</a></li>
+                    <li><a href=""><i class="fas fa-book"></i>Sobre Nós</a></li>
+                    <li><a href=""><i class="fas fa-phone"></i>Contato</a></li>
+                    <li><a href=""><i class="fas fa-user"></i>Login</a></li>
                 </ul>
             </div>
         </nav>
     </header>
+    <main>
+        <section id="cadastrarConsulta" class="pa-all-g">
+            <h1>Cadastrar consulta</h1>
+            <div class="formulario pa-all-g ma-top-m">
+                <form action="#">
+                    <label for="select-round" class="select-round">
+                        <select name="paciente" id="select-round">
+                            <option value="Jão">João</option>
+                            <option value="Cleber">Cleber</option>
+                        </select>
+                        <span>Paciente</span>
+                    </label>
+
+                    <label for="select-round" class="select-round">
+                        <select name="paciente" id="select-round">
+                            <option value="Jão">João</option>
+                            <option value="Cleber">Cleber</option>
+                        </select>
+                        <span>Médico</span>
+                    </label>
+
+                    <label class="inpt-round">
+                        <input id="inpt-round" type="date" placeholder="&nbsp;">
+                        <span class="inpt-label">Data da consulta</span>
+                    </label>
+
+                    <label class="inpt-round">
+                        <input id="inpt-round" type="time" placeholder="&nbsp;">
+                        <span class="inpt-label">Horário da consulta</span>
+                    </label>
+
+                    <label for="select-round" class="select-round">
+                        <select name="paciente" id="select-round">
+                            <option value="Jão">João</option>
+                            <option value="Cleber">Cleber</option>
+                        </select>
+                        <span>Status</span>
+                    </label>
+
+                    <label class="inpt-round">
+                        <input id="inpt-round" type="number" min="1" step="any" placeholder="&nbsp;">
+                        <span class="inpt-label">Preço</span>
+                    </label>
+
+                    <label class="text-round">
+                        <textarea id="text-round" placeholder="&nbsp;"></textarea>
+                        <span class="inpt-label">Observações</span>
+                    </label>
+
+                    <label>
+                        <button action="submit" class="green-btn">Cadastrar</button>
+                    </label>
+                </form>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>
