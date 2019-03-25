@@ -1,0 +1,75 @@
+/* Mudando cor da top bar */
+#top-bar {
+    color: black;
+}
+
+#menu ul li a {
+    color: black;
+}
+
+#minhasConsultas {
+    width: 100%;
+    height: calc(100vh - 72px);
+
+    padding-left: 100px;
+    padding-right: 100px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#minhasConsultas h1 {
+    font-size: 5em;
+    font-weight: 300;
+    align-self: flex-start;
+    margin-left: 100px;
+}
+
+.tabela {
+    /* min-width: 500px; */
+    width: 100%;
+    /* min-height: 100%; */
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.tabela-dados {
+    height: 600px;
+    overflow-y: auto;
+}
+
+.tabela table {
+    width: 100%;
+    /* min-height: 100%; */
+    height: 600px;
+
+    /* padding: 40px 40px; */
+}
+
+.tabela th {
+    font-size: 2em;
+    text-align: center;
+}
+
+.tabela td {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.tabela tr {
+    /* border: 1px solid black; */
+    margin-bottom: 100px;
+}
+
+.tabela th, .tabela td {
+    width: 200px;
+    height: 90px;
+}
+
+/* 
+.tabela tr > * {
+    margin-left: 20px;
+    margin-right: 20px;
+} */

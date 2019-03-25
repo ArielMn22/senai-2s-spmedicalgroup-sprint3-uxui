@@ -116,7 +116,8 @@
 /* Buttons */
 .green-btn {
     padding: 1em;
-    background-color: #81DF99;
+    /* background-color: #81DF99; */
+    background-color: #2FFF12;
     border: none;
     border-radius: 100px;
     color: black;
@@ -128,6 +129,7 @@
 .green-btn:hover {
     background-color: #83BEDF;
     color: white;
+    transform: scale(1.1);
 }
 
 .inpt-round {
@@ -140,9 +142,9 @@
     /* border: none; */
     border: 1px solid black;
     /* box-shadow: 4px 4px 4px #ccc; */
-    border-radius: 100px;
+    border-radius: 5px;
     text-indent: 10px;
-    width: 200px;
+    /* width: 350px; */
     padding: 10px 0;
     font-size: 1.4em;
     resize: none;
@@ -166,17 +168,17 @@
     /* transform-origin: 0 0; */
     transition: all .3s;
     top: 10px;
-    font-size: 1.4em;
+    font-size: calc(1.6em * 0.9);
 }
 
 /* Input transition */
 #inpt-round:focus + .inpt-label {
-    transform: translateY(-30px) scale(0.9);
+    transform: translateY(-35px) scale(0.9);
     color: black;
 }
 
 #inpt-round:not(:placeholder-shown) + .inpt-label {
-    transform: translateY(-30px) scale(0.9);
+    transform: translateY(-35px) scale(0.9);
     color: black;
 }
 
@@ -185,12 +187,12 @@
     position: relative;
 }
 
-.select-label {
+/* .select-label {
     font-size: calc(1.4em * 0.9);
-}
+} */
 
 #select-round + span {
-    transform: translateY(-30px) scale(1);
+    transform: translateY(-35px) scale(0.9);
 }
 
 .text-round {
@@ -198,7 +200,7 @@
 }
 
 #text-round:focus + .text-label {
-    transform: translateY(-30px) scale(0.9);
+    transform: translateY(-35px) scale(0.9);
     color: black;
 }
 
@@ -214,4 +216,22 @@
 
 .ma-top-m {
     margin-top: 20px;
+}
+
+/* Tamanhos de input */
+.grande {
+    width: 350px;
+}
+
+.medio {
+    width: 200px;
+}
+
+.pequeno {
+    width: 100px;
+}
+
+.texto {
+    width: 500px;
+    height: 200px;
 }
