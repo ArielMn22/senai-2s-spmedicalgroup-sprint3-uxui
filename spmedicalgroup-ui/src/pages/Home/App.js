@@ -1,0 +1,120 @@
+import React, { Component } from "react";
+// import logo from "../../logo.svg";
+import "../../assets/css/style.css";
+import "../../assets/css/index.css";
+import Rodape from '../../components/Rodape';
+import Logo from "../../assets/imgs/SP Medical Group - logo.png";
+import Woman from "../../assets/imgs/woman.jpg";
+import Lobby1 from "../../assets/imgs/lobby2.jpg";
+import Lobby2 from "../../assets/imgs/bg1.jpg";
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <header>
+          <nav id="top-bar" class="degrade">
+            <div id="logo" class="flex-container">
+              <a href="index.html">
+                <div class="logo-img">
+                  <img src={Logo} alt="" />
+                </div>
+              </a>
+
+              <p>SP Medical Group</p>
+            </div>
+            <div id="menu">
+              <ul class="flex-container">
+                <li>
+                  <a href="">
+                    <i class="fas fa-home" />Home
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fas fa-book" />Sobre Nós
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fas fa-phone" />Contato
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="fas fa-user" />Login
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <main>
+          <section id="banner">
+            <h1>A clínica que cuida da sua família!</h1>
+            <button class="green-btn">Fale Conosco</button>
+          </section>
+          <section id="areaPaciente">
+            <div id="imgPaciente">
+              <img
+                src={Woman}
+                alt="Imagem de uma paciente do hospital."
+              />
+            </div>
+            <div id="areaPacienteContent">
+              <h2>Área do paciente</h2>
+              <p>Deseja ver suas consultas ou resultados de exames?</p>
+              <a href="login.html" class="green-btn">
+                Clique aqui!
+              </a>
+            </div>
+          </section>
+          {/* <!-- <section id="nossasEspecialidades">
+            <h2>Nossas Especialidades</h2>
+            
+        </section> --> */}
+          <div class="separador-img" />
+
+          <section id="nossasInstalacoes" class="pa-all-g">
+            <h2>Nossas Instalações</h2>
+
+            <div class="instalacao">
+              <img src={Lobby1} alt="Lobby do hospital." />
+              <p>Excenlentes instalações para garantir o seu conforto...</p>
+            </div>
+
+            <div class="instalacao">
+              <p>...E total agilidade.</p>
+              <img src={Lobby2} alt="Lobby do hospital." />
+            </div>
+          </section>
+          <section id="localizacao" class="pa-all-g">
+            <h2>Localização</h2>
+            <div class="localizacao-conteudo pa-all-g">
+              <div class="google-api">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.887132913111!2d-46.648477084454164!3d-23.536561566563364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5843deade6e3%3A0x124f377d06c7e71f!2sAlameda+Bar%C3%A3o+de+Limeira%2C+539+-+Campos+El%C3%ADseos%2C+S%C3%A3o+Paulo+-+SP%2C+01202-001!5e0!3m2!1spt-PT!2sbr!4v1555096014275!5m2!1spt-PT!2sbr"
+                  width="800"
+                  height="600"
+                  frameborder="0"
+                  // // style="border:0"
+                  // style={{border:0}}
+                  allowfullscreen
+                />
+              </div>
+              <div class="localizacao-text">
+                <h3>Endereço</h3>
+                <p>Alameda Barão de Limeira, 539.</p>
+                <h3>Contato</h3>
+                <p>+55 (11) 95555-5555</p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Rodape />
+      </div>
+    );
+  }
+}
+
+export default App;
