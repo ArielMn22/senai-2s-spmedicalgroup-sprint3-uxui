@@ -7,48 +7,13 @@ import Logo from "../../assets/imgs/SP Medical Group - logo.png";
 import Woman from "../../assets/imgs/woman.jpg";
 import Lobby1 from "../../assets/imgs/lobby2.jpg";
 import Lobby2 from "../../assets/imgs/bg1.jpg";
+import Cabecalho from '../../components/Cabecalho';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <header>
-          <nav id="top-bar" class="degrade">
-            <div id="logo" class="flex-container">
-              <a href="index.html">
-                <div class="logo-img">
-                  <img src={Logo} alt="" />
-                </div>
-              </a>
-
-              <p>SP Medical Group</p>
-            </div>
-            <div id="menu">
-              <ul class="flex-container">
-                <li>
-                  <a href="">
-                    <i class="fas fa-home" />Home
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <i class="fas fa-book" />Sobre Nós
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <i class="fas fa-phone" />Contato
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <i class="fas fa-user" />Login
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </header>
+        <Cabecalho />
         <main>
           <section id="banner">
             <h1>A clínica que cuida da sua família!</h1>

@@ -9,7 +9,7 @@
 
 #minhasConsultas {
     width: 100%;
-    height: calc(100vh - 72px);
+    height: 100vh;
 
     padding-left: 100px;
     padding-right: 100px;

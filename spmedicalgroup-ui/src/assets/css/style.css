@@ -27,6 +27,7 @@
   align-items: center;
   color: white;
   position: fixed;
+  z-index: 999;
 }
 
 #logo {
@@ -263,6 +264,10 @@ p {
 
 .ma-top-m {
   margin-top: 20px;
+}
+
+.ma-top-g {
+  margin-top: 40px;
 }
 
 /* Tamanhos de input */

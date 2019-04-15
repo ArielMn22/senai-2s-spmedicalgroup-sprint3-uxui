@@ -3,16 +3,33 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './pages/Home/App';
 import * as serviceWorker from './serviceWorker';
+import MinhasConsultas from './pages/MinhasConsultas/MinhasConsultas';
+import NaoEncontrada from './pages/NaoEncontrada/NaoEncontrada';
+import Login from './pages/Login/Login';
+import Sair from './pages/Sair/Sair';
+
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
+import { usuarioAutenticado } from './services/auth';
+
+const Permissao = ({ component : Component}) => (
+    <Route
+        render = {props => usuarioAutenticado() ?
+            (<Component {...props}/>) :
+            (<Redirect to={{ pathname : '/login', state: {from: props.location}}} />)
+        }
+    />
+);
 
 const rotas = (
     <Router>
         <div>
             <Switch>
-                <Route exact="/" component={App}></Route>
-                {/* <Route exact="/cadastrarconsulta" component={CadastrarConsulta}></Route>
-                <Route exact="/listarconsulta" component={ListarConsulta}></Route>
-                <Route exact="/login" component={Login}></Route> */}
+                <Route exact path="/" component={App} />
+                {/* <Route exact path="/cadastrarconsulta" component={CadastrarConsulta}></Route> */}
+                <Permissao exact path="/minhasconsultas" component={MinhasConsultas}/>
+                <Permissao exact path="/sair" component={Sair}/>
+                <Route exact path="/login" component={Login}></Route>
+                <Route component={NaoEncontrada}/>
             </Switch>
         </div>
     </Router>
