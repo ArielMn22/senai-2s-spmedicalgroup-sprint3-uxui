@@ -9,7 +9,7 @@
 
 #cadastrarConsulta {
     width: 100%;
-    min-height: calc(100vh - 72px);
+    min-height: 100vh;
     height: auto;
 
     display: flex;

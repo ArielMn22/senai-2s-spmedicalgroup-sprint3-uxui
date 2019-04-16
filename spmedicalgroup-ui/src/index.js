@@ -10,6 +10,7 @@ import Sair from './pages/Sair/Sair';
 
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import { usuarioAutenticado } from './services/auth';
+import CadastrarUsuario from './pages/CadastrarUsuario/CadastrarUsuario';
 
 const Permissao = ({ component : Component}) => (
     <Route
@@ -26,6 +27,7 @@ const rotas = (
             <Switch>
                 <Route exact path="/" component={App} />
                 {/* <Route exact path="/cadastrarconsulta" component={CadastrarConsulta}></Route> */}
+                <Route exact path="/cadastrarusuario" component={CadastrarUsuario}/>
                 <Permissao exact path="/minhasconsultas" component={MinhasConsultas}/>
                 <Permissao exact path="/sair" component={Sair}/>
                 <Route exact path="/login" component={Login}></Route>

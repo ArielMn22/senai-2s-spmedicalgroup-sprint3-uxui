@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import "../assets/css/style.css";
 import Logo from "../assets/imgs/SP Medical Group - logo.png";
-import {Link} from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 
-export default class Cabecalho extends Component {
-  deslogar(event)
-  {
+class Cabecalho extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  deslogar(event) {
     event.preventDefault();
 
     localStorage.removeItem("spmedicalgroup-usuario");
 
-    // this.props.history.push("/");
-    // this.context.history.push('/')
-
+    this.props.history.push('/login');
   }
 
   render() {
@@ -119,3 +120,5 @@ export default class Cabecalho extends Component {
     }
   }
 }
+
+export default withRouter(Cabecalho);

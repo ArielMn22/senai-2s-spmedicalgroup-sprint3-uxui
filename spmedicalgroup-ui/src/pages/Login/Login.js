@@ -37,10 +37,10 @@ export default class Login extends Component {
     )
       .then(data => {
         localStorage.setItem("spmedicalgroup-usuario", data.data.token);
+        this.props.history.push("/minhasconsultas");
       })
       .catch(erro => console.log(erro));
 
-      this.props.history.push("/minhasconsultas");
   }
 
   atualizaEstadoEmail(event) {
