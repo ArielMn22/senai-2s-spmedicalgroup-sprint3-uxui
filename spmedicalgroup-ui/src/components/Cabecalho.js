@@ -4,6 +4,17 @@ import Logo from "../assets/imgs/SP Medical Group - logo.png";
 import {Link} from 'react-router-dom';
 
 export default class Cabecalho extends Component {
+  deslogar(event)
+  {
+    event.preventDefault();
+
+    localStorage.removeItem("spmedicalgroup-usuario");
+
+    // this.props.history.push("/");
+    // this.context.history.push('/')
+
+  }
+
   render() {
     let token = localStorage.getItem("spmedicalgroup-usuario");
 
@@ -48,7 +59,7 @@ export default class Cabecalho extends Component {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/sair">
+                    <Link onClick={this.deslogar.bind(this)}>
                       <i class="fas fa-user" />
                       Sair
                     </Link>
