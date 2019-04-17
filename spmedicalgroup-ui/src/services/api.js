@@ -16,14 +16,10 @@ export default {
           }
         }),
 
-      post: () =>
-        axios.post(
-          url + "consultas",
-          consulta,
-          {
-            headers: { Authorization: auth }
-          }
-        )
+      cadastrarConsulta: () =>
+        axios.post(url + "consultas", consulta, {
+          headers: { Authorization: auth }
+        })
     };
   },
 
@@ -31,28 +27,20 @@ export default {
     const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
     return {
-      CadastrarPaciente : () =>
-        axios.post(
-          url + "usuarios/paciente",
-          paciente,
-          {
-            headers: {
-              Authorization: auth,
-              'Content-Type' : 'multipart/form-data'
-            }
+      CadastrarPaciente: () =>
+        axios.post(url + "usuarios/paciente", paciente, {
+          headers: {
+            Authorization: auth,
+            "Content-Type": "multipart/form-data"
           }
-        ),
+        }),
 
-        ListarPacientes : () =>
-          axios.get(
-            url + "usuarios/pacientes",
-            {
-              headers : {
-                Authorization : auth
-              }
-            }
-          )
-
+      ListarPacientes: () =>
+        axios.get(url + "usuarios/pacientes", {
+          headers: {
+            Authorization: auth
+          }
+        })
     };
   },
 
@@ -60,44 +48,59 @@ export default {
     const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
     return {
-      CadastrarMedico : () =>
-        axios.post(
-          url + "usuarios/medico",
-          medico,
-          {
-            headers: {
-              Authorization: auth,
-              'Content-Type' : 'multipart/form-data'
-            }
+      CadastrarMedico: () =>
+        axios.post(url + "usuarios/medico", medico, {
+          headers: {
+            Authorization: auth,
+            "Content-Type": "multipart/form-data"
           }
-        ),
+        }),
 
-        ListarMedicos : () =>
-          axios.get(
-            url + "usuarios/medicos",
-            {
-              headers : {
-                Authorization : auth
-              }
-            }
-          )
-
+      ListarMedicos: () =>
+        axios.get(url + "usuarios/medicos", {
+          headers: {
+            Authorization: auth
+          }
+        })
     };
   },
+
+  administrador(administrador) {
+    const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
+
+    return {
+      cadastrarAdministrador: () =>
+        axios.post(url + "usuarios/administrador", administrador, {
+          headers: {
+            Authorization: auth,
+            "Content-Type": "multipart/form-data"
+          }
+        })
+    };
+  },
+
   status() {
     const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
     return {
-        ListarStatus : () =>
-          axios.get(
-            url + "status",
-            {
-              headers : {
-                Authorization : auth
-              }
-            }
-          )
+      ListarStatus: () =>
+        axios.get(url + "status", {
+          headers: {
+            Authorization: auth
+          }
+        })
+    };
+  },
+  especialidades() {
+    const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
+    return {
+      ListarEspecialidades: () =>
+        axios.get(url + "especialidades", {
+          headers: {
+            Authorization: auth
+          }
+        })
     };
   }
 };

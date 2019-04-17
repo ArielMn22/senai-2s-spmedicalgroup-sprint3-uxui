@@ -10,14 +10,36 @@ import Sair from './pages/Sair/Sair';
 import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
-import { usuarioAutenticado } from './services/auth';
-import CadastrarUsuario from './pages/CadastrarUsuario/CadastrarUsuario';
+import { usuarioAutenticado } from './services/authUsuario';
+import { medicoAutenticado } from './services/authMedico';
+import { administradorAutenticado } from './services/authAdministrador';
+import CadastrarPaciente from './pages/CadastrarPaciente/CadastrarPaciente';
+import CadastrarMedico from './pages/CadastrarMedico/CadastrarMedico';
+import CadastrarAdministrador from './pages/CadastrarAdministrador/CadastrarAdministrador';
 
-const Permissao = ({ component : Component}) => (
+const UsuarioPermissao = ({ component : Component}) => (
     <Route
         render = {props => usuarioAutenticado() ?
             (<Component {...props}/>) :
             (<Redirect to={{ pathname : '/login', state: {from: props.location}}} />)
+        }
+    />
+);
+
+const MedicoPermissao = ({ component : Component}) => (
+    <Route
+        render = {props => medicoAutenticado() ?
+            (<Component {...props}/>) :
+            (<Redirect to={{ pathname : '/login', state: {from: props.location}}} />)
+        }
+    />
+);
+
+const AdministradorPermissao = ({ component : Component}) => (
+    <Route
+        render = {props => administradorAutenticado() ?
+            (<Component {...props}/>) :
+            (<Redirect to={{ pathname : '/', state: {from: props.location}}} />)
         }
     />
 );
@@ -27,10 +49,12 @@ const rotas = (
         <div>
             <Switch>
                 <Route exact path="/" component={App} />
-                <Permissao exact path="/cadastrarconsulta" component={CadastrarConsulta}/>
-                <Route exact path="/cadastrarusuario" component={CadastrarUsuario}/>
-                <Permissao exact path="/minhasconsultas" component={MinhasConsultas}/>
-                <Permissao exact path="/sair" component={Sair}/>
+                <AdministradorPermissao exact path="/cadastrarconsulta" component={CadastrarConsulta}/>
+                <Route exact path="/cadastrarusuario" component={CadastrarPaciente}/>
+                <AdministradorPermissao exact path="/cadastrarmedico" component={CadastrarMedico}/>
+                <AdministradorPermissao exact path="/cadastraradministrador" component={CadastrarAdministrador}/>
+                <UsuarioPermissao exact path="/minhasconsultas" component={MinhasConsultas}/>
+                <UsuarioPermissao exact path="/sair" component={Sair}/>
                 <Route exact path="/login" component={Login}></Route>
                 <Route component={NaoEncontrada}/>
             </Switch>

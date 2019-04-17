@@ -48,7 +48,7 @@ export default class ListarConsultas extends Component {
             <table>
               {this.state.listaConsultas.map(consulta => {
                 return (
-                  <tr> 
+                  <tr>
                     <td>{consulta.medicoNome}</td>
                     <td>{consulta.especialidade}</td>
                     <td>{consulta.descricao}</td>
@@ -62,8 +62,7 @@ export default class ListarConsultas extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario == "Médico")
-    {
+    } else if (decode.tipoUsuario == "Médico") {
       return (
         <div>
           <table className="colunas ma-top-m">
@@ -79,11 +78,44 @@ export default class ListarConsultas extends Component {
             <table>
               {this.state.listaConsultas.map(consulta => {
                 return (
-                  <tr> 
+                  <tr>
                     <td>{consulta.pacienteNome}</td>
                     <td>{consulta.dataConsulta}</td>
                     <td>{consulta.descricao}</td>
                     <td>{consulta.pacienteEmail}</td>
+                    <td>{consulta.status}</td>
+                  </tr>
+                );
+              })}
+            </table>
+          </div>
+        </div>
+      );
+    } else if (decode.tipoUsuario == "Administrador") {
+      return (
+        <div>
+          <table className="colunas ma-top-m">
+            <tr>
+              <th>Paciente</th>
+              <th>Médico</th>
+              <th>Data da consulta</th>
+              <th>Observações</th>
+              <th>E-mail do paciente</th>
+              <th>E-mail do médico</th>
+              <th>Status</th>
+            </tr>
+          </table>
+          <div className="tabela">
+            <table>
+              {this.state.listaConsultas.map(consulta => {
+                return (
+                  <tr>
+                    <td>{consulta.pacienteNome}</td>
+                    <td>{consulta.medicoNome}</td>
+                    <td>{consulta.dataConsulta}</td>
+                    <td>{consulta.descricao}</td>
+                    <td>{consulta.pacienteEmail}</td>
+                    <td>{consulta.medicoEmail}</td>
                     <td>{consulta.status}</td>
                   </tr>
                 );

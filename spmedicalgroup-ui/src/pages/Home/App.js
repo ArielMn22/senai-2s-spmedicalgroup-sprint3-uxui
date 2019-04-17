@@ -16,7 +16,7 @@ class App extends Component {
         <main>
           <section id="banner">
             <h1>A clínica que cuida da sua família!</h1>
-            <button class="green-btn">Fale Conosco</button>
+            <Link to="/contato" class="green-btn">Fale Conosco</Link>
           </section>
           <section id="areaPaciente">
             <div id="imgPaciente">

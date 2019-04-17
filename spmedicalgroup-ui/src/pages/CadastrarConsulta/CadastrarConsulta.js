@@ -76,24 +76,32 @@ export default class CadastrarConsulta extends Component {
       .catch(erro => console.log(erro));
   }
 
-  consultaPost()
-  {
-    let consulta = {
-        paciente : this.state.paciente,
-        medico : this.state.medico,
-        dataConsulta : this.state.dataConsulta + this.state.horario,
-        status : this.state.status,
-        preco : this.state.preco,
-        observacoes : this.state.descricao
-    }
+  consultaPost(event) {
+    event.preventDefault();
 
-    api.consultas(consulta).post()
-    .then(data => {
-        console.log(data);
-    })
-    .catch(
-        erro => console.log(erro)
-    );
+    let consulta = {
+      idPaciente: this.state.paciente,
+      idMedico: this.state.medico,
+      dataConsulta: this.state.dataConsulta + "T" + this.state.horario,
+      observacoes: this.state.descricao,
+      preco: this.state.preco,
+      idStatus: this.state.status
+    };
+
+    console.log(consulta);
+
+    // api.consultas(consulta).post()
+    // .then(data => {
+    //     console.log(data);
+    // })
+    // .catch(
+    //     erro => console.log(erro)
+    // );
+    api
+      .consultas(consulta)
+      .cadastrarConsulta()
+      .then(data => console.log(data))
+      .catch(erro => console.log(erro));
   }
 
   render() {
@@ -101,15 +109,15 @@ export default class CadastrarConsulta extends Component {
       <div>
         <Cabecalho />
         <main>
-          <section id="cadastrarConsulta" class="pa-all-g">
-            <h1 class="ma-top-g">Cadastrar consulta</h1>
-            <div class="formulario pa-all-g ma-top-m">
+          <section id="cadastrarConsulta" className="pa-all-g">
+            <h1 className="ma-top-g">Cadastrar consulta</h1>
+            <div className="formulario pa-all-g ma-top-m">
               <form onSubmit={this.consultaPost.bind(this)}>
-                <label class="select-round">
+                <label className="select-round">
                   <select
                     value={this.state.paciente}
                     onChange={this.atualizaEstadoPaciente.bind(this)}
-                    class="grande"
+                    className="grande"
                     name="paciente"
                     id="select-round"
                   >
@@ -122,14 +130,14 @@ export default class CadastrarConsulta extends Component {
                       );
                     })}
                   </select>
-                  <span class="select-label">Paciente</span>
+                  <span className="select-label">Paciente</span>
                 </label>
 
-                <label for="select-round" class="select-round">
+                <label for="select-round" className="select-round">
                   <select
                     value={this.state.medico}
                     onChange={this.atualizaEstadoMedico.bind(this)}
-                    class="grande"
+                    className="grande"
                     name="medico"
                     id="select-round"
                   >
@@ -142,38 +150,38 @@ export default class CadastrarConsulta extends Component {
                       );
                     })}
                   </select>
-                  <span class="select-label">Médico</span>
+                  <span className="select-label">Médico</span>
                 </label>
 
-                <label class="inpt-round">
+                <label className="inpt-round">
                   <input
-                    class="medio"
+                    className="medio"
                     id="inpt-round"
                     type="date"
                     placeholder="&nbsp;"
                     value={this.state.dataConsulta}
                     onChange={this.atualizaEstadoDataConsulta.bind(this)}
                   />
-                  <span class="inpt-label">Data da consulta</span>
+                  <span className="inpt-label">Data da consulta</span>
                 </label>
 
-                <label class="inpt-round">
+                <label className="inpt-round">
                   <input
-                    class="medio"
+                    className="medio"
                     id="inpt-round"
                     type="time"
                     placeholder="&nbsp;"
                     value={this.state.horario}
                     onChange={this.atualizaEstadoHorario.bind(this)}
                   />
-                  <span class="inpt-label">Horário da consulta</span>
+                  <span className="inpt-label">Horário da consulta</span>
                 </label>
 
-                <label for="select-round" class="select-round">
+                <label for="select-round" className="select-round">
                   <select
                     value={this.state.status}
                     onChange={this.atualizaEstadoStatus.bind(this)}
-                    class="grande"
+                    className="grande"
                     name="paciente"
                     id="select-round"
                   >
@@ -182,12 +190,12 @@ export default class CadastrarConsulta extends Component {
                       return <option value={status.id}>{status.nome}</option>;
                     })}
                   </select>
-                  <span class="select-label">Status</span>
+                  <span className="select-label">Status</span>
                 </label>
 
-                <label class="inpt-round">
+                <label className="inpt-round">
                   <input
-                    class="medio"
+                    className="medio"
                     id="inpt-round"
                     type="number"
                     min="1"
@@ -196,24 +204,29 @@ export default class CadastrarConsulta extends Component {
                     value={this.state.preco}
                     onChange={this.atualizaEstadoPreco.bind(this)}
                   />
-                  <span class="inpt-label">Preço</span>
+                  <span className="inpt-label">Preço</span>
                 </label>
 
-                <label class="text-round">
+                <label className="text-round">
                   <textarea
-                    class="texto"
+                    className="texto"
                     id="text-round"
                     placeholder="&nbsp;"
                     value={this.state.descricao}
                     onChange={this.atualizaEstadoDescricao.bind(this)}
                   />
-                  <span class="text-label">Observações</span>
+                  <span className="text-label">Observações</span>
                 </label>
 
                 <label>
-                  <button action="submit" class="green-btn">
+                  {/* <button action="submit" className="green-btn">
                     Cadastrar
-                  </button>
+                  </button> */}
+                  <input
+                    className="green-btn"
+                    value="Cadastrar"
+                    type="submit"
+                  />
                 </label>
               </form>
             </div>

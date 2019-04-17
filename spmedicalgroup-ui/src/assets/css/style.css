@@ -60,7 +60,7 @@
 #menu ul {
   list-style-type: none;
 
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
   width: 100%;
@@ -130,6 +130,7 @@
   transition: all 0.3s;
   box-shadow: 4px 4px 4px rgb(87, 87, 87);
   font-size: 2em;
+  text-decoration: none;
 }
 
 .green-btn:hover {
