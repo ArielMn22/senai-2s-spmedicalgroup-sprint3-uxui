@@ -24,21 +24,21 @@ export default class CadastrarUsuario extends Component {
     
     cadastrarUsuario()
     {
-        let usuarioFormData = new FormData();
+        let pacienteFormData = new FormData();
 
         // Setando valores do FormData
-        usuarioFormData.set('nome', this.state.nome);
-        usuarioFormData.set('email', this.state.email);
-        usuarioFormData.set('senha', this.state.senha);
-        usuarioFormData.set('telefone', this.state.telefone);
-        usuarioFormData.set('rg', this.state.rg);
-        usuarioFormData.set('cpf', this.state.cpf);
-        usuarioFormData.set('dataNascimento', this.state.dataNascimento);
-        usuarioFormData.set('endereco', this.state.endereco);
-        usuarioFormData.set('idTipoUsuario', 3);
-        usuarioFormData.set('idClinica', 1);
+        pacienteFormData.set('nome', this.state.nome);
+        pacienteFormData.set('email', this.state.email);
+        pacienteFormData.set('senha', this.state.senha);
+        pacienteFormData.set('telefone', this.state.telefone);
+        pacienteFormData.set('rg', this.state.rg);
+        pacienteFormData.set('cpf', this.state.cpf);
+        pacienteFormData.set('dataNascimento', this.state.dataNascimento);
+        pacienteFormData.set('endereco', this.state.endereco);
+        pacienteFormData.set('idTipoUsuario', 3);
+        pacienteFormData.set('idClinica', 1);
 
-        api.usuarios(usuarioFormData).CadastrarPaciente();
+        api.pacientes(pacienteFormData).CadastrarPaciente();
     }
 
     atualizaNome(event)
@@ -87,12 +87,12 @@ export default class CadastrarUsuario extends Component {
         <Cabecalho />
         <main>
           <section id="cadastrarConsulta" class="pa-all-g">
-            <h1 class="ma-top-g">Cadastrar Paciente</h1>
+            <h1 class="ma-top-gg">Se cadastre em nosso sistema</h1>
             <div class="formulario pa-all-g ma-top-m">
               <form onSubmit={this.cadastrarUsuario.bind(this)} action="#">
               <label class="inpt-round">
                   <input
-                    class="medio"
+                    class="grande"
                     id="inpt-round"
                     type="text"
                     placeholder="&nbsp;"
@@ -103,7 +103,7 @@ export default class CadastrarUsuario extends Component {
                 </label>
                 <label class="inpt-round">
                   <input
-                    class="medio"
+                    class="grande"
                     id="inpt-round"
                     type="email"
                     placeholder="&nbsp;"

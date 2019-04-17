@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import Cabecalho from "../../components/Cabecalho";
 import Rodape from "../../components/Rodape";
 import "../../assets/css/login.css";
+import "../../assets/css/style.css";
 import Axios from "axios";
+import {Link} from 'react-router-dom';
 
 export default class Login extends Component {
   constructor() {
@@ -90,6 +92,9 @@ export default class Login extends Component {
                   <button className="squared-btn">Login</button>
                 </label>
               </form>
+                <div className="login__cliqueAqui__div">
+                <span>Ainda não é cadastrado?<br /><Link to="/cadastrarusuario" className="login__a__cliqueaqui">Clique aqui</Link> para se cadastrar.</span>
+                </div>
             </div>
           </section>
         </main>

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-// import logo from "../../logo.svg";
 import "../../assets/css/style.css";
 import "../../assets/css/index.css";
 import Rodape from '../../components/Rodape';
-import Logo from "../../assets/imgs/SP Medical Group - logo.png";
 import Woman from "../../assets/imgs/woman.jpg";
 import Lobby1 from "../../assets/imgs/lobby2.jpg";
 import Lobby2 from "../../assets/imgs/bg1.jpg";
 import Cabecalho from '../../components/Cabecalho';
+import {Link} from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -29,15 +28,12 @@ class App extends Component {
             <div id="areaPacienteContent">
               <h2>Área do paciente</h2>
               <p>Deseja ver suas consultas ou resultados de exames?</p>
-              <a href="login.html" class="green-btn">
+              <Link to="/login" class="green-btn">
                 Clique aqui!
-              </a>
+              </Link>
             </div>
           </section>
-          {/* <!-- <section id="nossasEspecialidades">
-            <h2>Nossas Especialidades</h2>
-            
-        </section> --> */}
+      
           <div class="separador-img" />
 
           <section id="nossasInstalacoes" class="pa-all-g">
@@ -45,7 +41,7 @@ class App extends Component {
 
             <div class="instalacao">
               <img src={Lobby1} alt="Lobby do hospital." />
-              <p>Excenlentes instalações para garantir o seu conforto...</p>
+              <p>Excelentes instalações para garantir o seu conforto...</p>
             </div>
 
             <div class="instalacao">
@@ -62,8 +58,6 @@ class App extends Component {
                   width="800"
                   height="600"
                   frameborder="0"
-                  // // style="border:0"
-                  // style={{border:0}}
                   allowfullscreen
                 />
               </div>

@@ -85,6 +85,7 @@
   color: white;
   padding: 27px;
   text-transform: uppercase;
+  text-align: center;
 }
 
 #menu ul li a i {
@@ -268,6 +269,10 @@ p {
 
 .ma-top-g {
   margin-top: 40px;
+}
+
+.ma-top-gg {
+  margin-top: 130px;
 }
 
 /* Tamanhos de input */

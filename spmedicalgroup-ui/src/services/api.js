@@ -5,7 +5,7 @@ import axios from "axios";
 const url = "http://localhost:5000/api/";
 
 export default {
-  consultasLogado(consulta) {
+  consultas(consulta) {
     const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
     return {
@@ -19,7 +19,7 @@ export default {
       post: () =>
         axios.post(
           url + "consultas",
-          { consulta },
+          consulta,
           {
             headers: { Authorization: auth }
           }
@@ -27,21 +27,77 @@ export default {
     };
   },
 
-  usuarios(usuario) {
+  pacientes(paciente) {
     const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
 
     return {
-      CadastrarPaciente: () =>
+      CadastrarPaciente : () =>
         axios.post(
           url + "usuarios/paciente",
-          usuario,
+          paciente,
           {
             headers: {
               Authorization: auth,
               'Content-Type' : 'multipart/form-data'
             }
           }
-        )
+        ),
+
+        ListarPacientes : () =>
+          axios.get(
+            url + "usuarios/pacientes",
+            {
+              headers : {
+                Authorization : auth
+              }
+            }
+          )
+
+    };
+  },
+
+  medicos(medico) {
+    const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
+
+    return {
+      CadastrarMedico : () =>
+        axios.post(
+          url + "usuarios/medico",
+          medico,
+          {
+            headers: {
+              Authorization: auth,
+              'Content-Type' : 'multipart/form-data'
+            }
+          }
+        ),
+
+        ListarMedicos : () =>
+          axios.get(
+            url + "usuarios/medicos",
+            {
+              headers : {
+                Authorization : auth
+              }
+            }
+          )
+
+    };
+  },
+  status() {
+    const auth = "bearer " + localStorage.getItem("spmedicalgroup-usuario");
+
+    return {
+        ListarStatus : () =>
+          axios.get(
+            url + "status",
+            {
+              headers : {
+                Authorization : auth
+              }
+            }
+          )
+
     };
   }
 };

@@ -12,7 +12,7 @@ export default class ListarConsultas extends Component {
 
   componentDidMount() {
     api
-      .consultasLogado()
+      .consultas()
       .getAll()
       .then(data => {
         this.setState({ listaConsultas: data.data });

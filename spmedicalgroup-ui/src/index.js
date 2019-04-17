@@ -7,6 +7,7 @@ import MinhasConsultas from './pages/MinhasConsultas/MinhasConsultas';
 import NaoEncontrada from './pages/NaoEncontrada/NaoEncontrada';
 import Login from './pages/Login/Login';
 import Sair from './pages/Sair/Sair';
+import CadastrarConsulta from './pages/CadastrarConsulta/CadastrarConsulta';
 
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import { usuarioAutenticado } from './services/auth';
@@ -26,7 +27,7 @@ const rotas = (
         <div>
             <Switch>
                 <Route exact path="/" component={App} />
-                {/* <Route exact path="/cadastrarconsulta" component={CadastrarConsulta}></Route> */}
+                <Permissao exact path="/cadastrarconsulta" component={CadastrarConsulta}/>
                 <Route exact path="/cadastrarusuario" component={CadastrarUsuario}/>
                 <Permissao exact path="/minhasconsultas" component={MinhasConsultas}/>
                 <Permissao exact path="/sair" component={Sair}/>

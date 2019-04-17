@@ -4,9 +4,6 @@ import Logo from "../assets/imgs/SP Medical Group - logo.png";
 import { Link, withRouter } from "react-router-dom";
 
 class Cabecalho extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   deslogar(event) {
     event.preventDefault();
