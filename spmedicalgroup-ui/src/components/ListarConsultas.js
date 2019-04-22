@@ -7,7 +7,8 @@ export default class ListarConsultas extends Component {
 
     this.state = {
       listaConsultas : [],
-      listaConsultasFiltrada : []
+      listaConsultasFiltrada : [],
+      accordion : true
     };
   }
 
@@ -20,6 +21,13 @@ export default class ListarConsultas extends Component {
         this.setState({ listaConsultasFiltrada: data.data });
         console.log(data);
       });
+  }
+
+  atualizaEstadoAccordion()
+  {
+    this.setState(prevstate => ({
+      accordion : !prevstate.accordion
+    }))
   }
 
   render() {
@@ -56,9 +64,11 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.descricao}</td>
                     <td>{consulta.dataConsulta}</td>
                     <td>R$ {consulta.preco}</td>
-                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                    {consulta.status == "Realizada" ||
+                    consulta.status == "Confirmada" ? (
                       <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                    ) : consulta.status == "Cancelada" ||
+                      consulta.status == "Recusada" ? (
                       <td style={{ color: "red" }}>{consulta.status}</td>
                     ) : consulta.status == "Adiada" ? (
                       <td style={{ color: "#dddd30" }}>{consulta.status}</td>
@@ -93,9 +103,11 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.dataConsulta}</td>
                     <td>{consulta.descricao}</td>
                     <td>{consulta.pacienteEmail}</td>
-                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                    {consulta.status == "Realizada" ||
+                    consulta.status == "Confirmada" ? (
                       <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                    ) : consulta.status == "Cancelada" ||
+                      consulta.status == "Recusada" ? (
                       <td style={{ color: "red" }}>{consulta.status}</td>
                     ) : consulta.status == "Adiada" ? (
                       <td style={{ color: "#dddd30" }}>{consulta.status}</td>
@@ -121,6 +133,7 @@ export default class ListarConsultas extends Component {
               <th>E-mail do paciente</th>
               <th>E-mail do médico</th>
               <th>Status</th>
+              <th></th>
             </tr>
           </table>
           <div className="tabela">
@@ -132,17 +145,28 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.medicoNome}</td>
                     <td>{consulta.dataConsulta}</td>
                     <td>{consulta.descricao}</td>
-                    <td>{consulta.pacienteEmail}</td>
-                    <td>{consulta.medicoEmail}</td>
-                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                    <td>
+                      {this.state.accordion === true
+                        ? consulta.pacienteEmail.substring(0, 10) + "..."
+                        : consulta.pacienteEmail}
+                    </td>
+                    <td>
+                      {consulta.medicoEmail.length > 10
+                        ? consulta.medicoEmail.substring(0, 10) + "..."
+                        : consulta.medicoEmail}
+                    </td>
+                    {consulta.status == "Realizada" ||
+                    consulta.status == "Confirmada" ? (
                       <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                    ) : consulta.status == "Cancelada" ||
+                      consulta.status == "Recusada" ? (
                       <td style={{ color: "red" }}>{consulta.status}</td>
                     ) : consulta.status == "Adiada" ? (
                       <td style={{ color: "#dddd30" }}>{consulta.status}</td>
                     ) : (
                       <td style={{ color: "#2393ff" }}>{consulta.status}</td>
                     )}
+                    <td onClick={this.atualizaEstadoAccordion.bind(this)}>a</td>
                   </tr>
                 );
               })}
