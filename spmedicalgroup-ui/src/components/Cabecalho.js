@@ -49,7 +49,7 @@ class Cabecalho extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/contato">
+                      <Link to="/contatenos">
                         <i class="fas fa-phone" />
                         Contato
                       </Link>
@@ -101,7 +101,7 @@ class Cabecalho extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/contato">
+                      <Link to="/contatenos">
                         <i class="fas fa-phone" />
                         Contato
                       </Link>
@@ -153,7 +153,7 @@ class Cabecalho extends Component {
                       </Link>
                     </li>
                     <li>
-                      <Link to="/contato">
+                      <Link to="/contatenos">
                         <i class="fas fa-phone" />
                         Contato
                       </Link>
@@ -225,7 +225,7 @@ class Cabecalho extends Component {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/contato">
+                    <Link to="/contatenos">
                       <i class="fas fa-phone" />
                       Contato
                     </Link>

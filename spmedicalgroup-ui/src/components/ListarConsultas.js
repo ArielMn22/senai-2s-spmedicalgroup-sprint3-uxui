@@ -6,7 +6,8 @@ export default class ListarConsultas extends Component {
     super();
 
     this.state = {
-      listaConsultas: []
+      listaConsultas : [],
+      listaConsultasFiltrada : []
     };
   }
 
@@ -16,6 +17,7 @@ export default class ListarConsultas extends Component {
       .getAll()
       .then(data => {
         this.setState({ listaConsultas: data.data });
+        this.setState({ listaConsultasFiltrada: data.data });
         console.log(data);
       });
   }
@@ -54,7 +56,15 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.descricao}</td>
                     <td>{consulta.dataConsulta}</td>
                     <td>R$ {consulta.preco}</td>
-                    <td>{consulta.status}</td>
+                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                      <td style={{ color: "red" }}>{consulta.status}</td>
+                    ) : consulta.status == "Adiada" ? (
+                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                    ) : (
+                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                    )}
                   </tr>
                 );
               })}
@@ -83,7 +93,15 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.dataConsulta}</td>
                     <td>{consulta.descricao}</td>
                     <td>{consulta.pacienteEmail}</td>
-                    <td>{consulta.status}</td>
+                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                      <td style={{ color: "red" }}>{consulta.status}</td>
+                    ) : consulta.status == "Adiada" ? (
+                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                    ) : (
+                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                    )}
                   </tr>
                 );
               })}
@@ -116,7 +134,15 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.descricao}</td>
                     <td>{consulta.pacienteEmail}</td>
                     <td>{consulta.medicoEmail}</td>
-                    <td>{consulta.status}</td>
+                    {consulta.status == "Realizada" || consulta.status == "Confirmada" ? (
+                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                    ) : consulta.status == "Cancelada" || consulta.status == "Recusada" ? (
+                      <td style={{ color: "red" }}>{consulta.status}</td>
+                    ) : consulta.status == "Adiada" ? (
+                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                    ) : (
+                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                    )}
                   </tr>
                 );
               })}

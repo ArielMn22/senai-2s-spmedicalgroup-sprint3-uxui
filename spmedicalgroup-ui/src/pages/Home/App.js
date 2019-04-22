@@ -25,7 +25,7 @@ class App extends Component {
                 alt="Imagem de uma paciente do hospital."
               />
             </div>
-            <div id="areaPacienteContent">
+            <div id="areaPaciente__text">
               <h2>Área do paciente</h2>
               <p>Deseja ver suas consultas ou resultados de exames?</p>
               <Link to="/login" class="green-btn">

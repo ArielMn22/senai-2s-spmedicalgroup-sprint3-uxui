@@ -27,7 +27,7 @@
     height: 100%;
 }
 
-#areaPacienteContent {
+#areaPaciente__text {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,11 +36,11 @@
     width: 100%;
 }
 
-#areaPacienteContent a {
+#areaPaciente__text a {
     text-decoration: none;
 }
 
-#areaPacienteContent>* {
+#areaPaciente__text>* {
     margin: 40px 0;
 }
 
@@ -52,7 +52,7 @@
     background-position: center;
     background-size: cover;
     box-shadow: 4px 4px 4px 4px #ccc;
-    border: 1px solid #262626;
+    /* border: 1px solid #262626; */
 }
 
 #nossasInstalacoes {

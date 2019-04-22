@@ -39,6 +39,7 @@
     align-items: center;
     color: white;
     position: fixed;
+    z-index: 999;
 }
 
 #logo {

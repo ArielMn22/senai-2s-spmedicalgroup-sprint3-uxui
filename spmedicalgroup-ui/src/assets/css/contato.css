@@ -1,0 +1,47 @@
+#top-bar {
+    color: white !important;
+}
+
+#menu ul li a {
+    color: white !important;
+}
+
+#contato__banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
+    width: 100%;
+    background-image: url("../imgs/Backgorund.jpg");
+    background-size: cover;
+}
+
+#contato__banner__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contato__banner__text > * {
+    margin: 20px 0;
+}
+
+#contato__banner__text h1 {
+    font-size: 6em;
+    color: white;
+    font-weight: 100;
+}
+
+#contato__banner__text h2 {
+    font-size: 3em;
+    font-weight: 100;
+    color: white;
+}
+
+#contato__banner__text p {
+    font-size: 2em;
+    /* font-weight: 100; */
+    color: white;
+}
