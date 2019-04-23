@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import api from "../services/api";
+import "../assets/css/style.css";
 
 export default class ListarConsultas extends Component {
   constructor() {
@@ -29,9 +30,8 @@ export default class ListarConsultas extends Component {
   atualizaEstadoAccord = i => {
     this.setState(state => {
       const list = state.listaConsultasFiltrada.map((consulta, j) => {
-        if (i == j)
-        {
-          consulta.accord = !(consulta.accord) // Deverá trocar o sinal da propriedade
+        if (i == j) {
+          consulta.accord = !consulta.accord; // Deverá trocar o sinal da propriedade
           return consulta;
         } else {
           return consulta;
@@ -39,7 +39,7 @@ export default class ListarConsultas extends Component {
       });
 
       return {
-        list,
+        list
       };
     });
   };
@@ -57,12 +57,6 @@ export default class ListarConsultas extends Component {
         console.log(data);
       });
   }
-
-  // atualizaEstadoAccordion() {
-  //   this.setState(prevstate => ({
-  //     accordion: !prevstate.accordion
-  //   }));
-  // }
 
   render() {
     let jwtDecode = require("jwt-decode");
@@ -86,30 +80,106 @@ export default class ListarConsultas extends Component {
               <th>Data da Consulta</th>
               <th>Preço</th>
               <th>Status</th>
+              <th />
             </tr>
           </table>
           <div className="tabela">
             <table>
-              {this.state.listaConsultas.map(consulta => {
+              {this.state.listaConsultasFiltrada.map((consulta, index) => {
                 return (
                   <tr>
-                    <td>{consulta.medicoNome}</td>
-                    <td>{consulta.especialidade}</td>
-                    <td>{consulta.descricao}</td>
-                    <td>{consulta.dataConsulta}</td>
-                    <td>R$ {consulta.preco}</td>
+                    <div>
+                      {/* <div> */}
+                      <td>{consulta.medicoNome}</td>
+                      <td>{consulta.especialidade}</td>
+                      <td>{consulta.descricao.substring(0, 10) + "..."}</td>
+                      <td>{consulta.dataConsulta}</td>
+                      <td>R$ {consulta.preco}</td>
+                      {consulta.status == "Realizada" ||
+                      consulta.status == "Confirmada" ? (
+                        <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                      ) : consulta.status == "Cancelada" ||
+                        consulta.status == "Recusada" ? (
+                        <td style={{ color: "red" }}>{consulta.status}</td>
+                      ) : consulta.status == "Adiada" ? (
+                        <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                      ) : (
+                        <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                      )}
+                      <td>
+                        {consulta.accord === true ? (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver mais
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver menos
+                          </button>
+                        )}
+                      </td>
+                    </div>
 
-                    {consulta.status == "Realizada" ||
-                    consulta.status == "Confirmada" ? (
-                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" ||
-                      consulta.status == "Recusada" ? (
-                      <td style={{ color: "red" }}>{consulta.status}</td>
-                    ) : consulta.status == "Adiada" ? (
-                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
-                    ) : (
-                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
-                    )}
+                    <div>
+                      {consulta.accord === true ? (
+                        <div />
+                      ) : (
+                        <div id="listar__accordion__div">
+                          <div class="listar__accordion__div__item">
+                            <h3>Médico</h3>
+                            <br />
+                            <p>{consulta.medicoNome}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Especialidade</h3>
+                            <br />
+                            <p>{consulta.especialidade}</p>
+                          </div>
+
+                          <div class="listar__accordion__div__item">
+                            <h3>Observações</h3>
+                            <br />
+                            <p>{consulta.descricao}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Data da consulta</h3>
+                            <br />
+                            <p>{consulta.dataConsulta}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Preço</h3>
+                            <br />
+                            <p>R$ {consulta.preco}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Status</h3>
+                            <br />
+                            {consulta.status == "Realizada" ||
+                            consulta.status == "Confirmada" ? (
+                              <p style={{ color: "#00ec00" }}>
+                                {consulta.status}
+                              </p>
+                            ) : consulta.status == "Cancelada" ||
+                              consulta.status == "Recusada" ? (
+                              <p style={{ color: "red" }}>{consulta.status}</p>
+                            ) : consulta.status == "Adiada" ? (
+                              <p style={{ color: "#dddd30" }}>
+                                {consulta.status}
+                              </p>
+                            ) : (
+                              <p style={{ color: "#2393ff" }}>
+                                {consulta.status}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </tr>
                 );
               })}
@@ -127,28 +197,100 @@ export default class ListarConsultas extends Component {
               <th>Observações</th>
               <th>E-mail do paciente</th>
               <th>Status</th>
+              <th />
             </tr>
           </table>
           <div className="tabela">
             <table>
-              {this.state.listaConsultas.map(consulta => {
+              {this.state.listaConsultasFiltrada.map((consulta, index) => {
                 return (
                   <tr>
-                    <td>{consulta.pacienteNome}</td>
-                    <td>{consulta.dataConsulta}</td>
-                    <td>{consulta.descricao}</td>
-                    <td>{consulta.pacienteEmail}</td>
-                    {consulta.status == "Realizada" ||
-                    consulta.status == "Confirmada" ? (
-                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" ||
-                      consulta.status == "Recusada" ? (
-                      <td style={{ color: "red" }}>{consulta.status}</td>
-                    ) : consulta.status == "Adiada" ? (
-                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
-                    ) : (
-                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
-                    )}
+                    <div>
+                      {/* <div> */}
+                      <td>{consulta.pacienteNome}</td>
+                      <td>{consulta.dataConsulta}</td>
+                      <td>{consulta.descricao.substring(0, 10) + "..."}</td>
+                      <td>{consulta.pacienteEmail.substring(0, 10) + "..."}</td>
+                      {consulta.status == "Realizada" ||
+                      consulta.status == "Confirmada" ? (
+                        <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                      ) : consulta.status == "Cancelada" ||
+                        consulta.status == "Recusada" ? (
+                        <td style={{ color: "red" }}>{consulta.status}</td>
+                      ) : consulta.status == "Adiada" ? (
+                        <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                      ) : (
+                        <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                      )}
+                      <td>
+                      {consulta.accord === true ? (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver mais
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver menos
+                          </button>
+                        )}
+                      </td>
+                    </div>
+
+                    <div>
+                      {consulta.accord === true ? (
+                        <div />
+                      ) : (
+                        <div id="listar__accordion__div">
+                          <div class="listar__accordion__div__item">
+                            <h3>Paciente</h3>
+                            <br />
+                            <p>{consulta.pacienteNome}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>E-mail Paciente</h3>
+                            <br />
+                            <p>{consulta.pacienteEmail}</p>
+                          </div>
+
+                          <div class="listar__accordion__div__item">
+                            <h3>Observações</h3>
+                            <br />
+                            <p>{consulta.descricao}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Data da consulta</h3>
+                            <br />
+                            <p>{consulta.dataConsulta}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Status</h3>
+                            <br />
+                            {consulta.status == "Realizada" ||
+                            consulta.status == "Confirmada" ? (
+                              <p style={{ color: "#00ec00" }}>
+                                {consulta.status}
+                              </p>
+                            ) : consulta.status == "Cancelada" ||
+                              consulta.status == "Recusada" ? (
+                              <p style={{ color: "red" }}>{consulta.status}</p>
+                            ) : consulta.status == "Adiada" ? (
+                              <p style={{ color: "#dddd30" }}>
+                                {consulta.status}
+                              </p>
+                            ) : (
+                              <p style={{ color: "#2393ff" }}>
+                                {consulta.status}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </tr>
                 );
               })}
@@ -176,35 +318,98 @@ export default class ListarConsultas extends Component {
               {this.state.listaConsultasFiltrada.map((consulta, index) => {
                 return (
                   <tr>
-                    <td>{consulta.pacienteNome}</td>
-                    <td>{consulta.medicoNome}</td>
-                    <td>{consulta.dataConsulta}</td>
-                    <td>{consulta.descricao}</td>
-                    <td>
-                      {consulta.accord === true
-                        ? consulta.pacienteEmail.substring(0, 10) + "..."
-                        : consulta.pacienteEmail}
-                    </td>
-                    <td>
-                      {consulta.accord === true
-                        ? consulta.medicoEmail.substring(0, 10) + "..."
-                        : consulta.medicoEmail}
-                    </td>
-                    {consulta.status == "Realizada" ||
-                    consulta.status == "Confirmada" ? (
-                      <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                    ) : consulta.status == "Cancelada" ||
-                      consulta.status == "Recusada" ? (
-                      <td style={{ color: "red" }}>{consulta.status}</td>
-                    ) : consulta.status == "Adiada" ? (
-                      <td style={{ color: "#dddd30" }}>{consulta.status}</td>
-                    ) : (
-                      <td style={{ color: "#2393ff" }}>{consulta.status}</td>
-                    )}
-                    <td>
-                      <button onClick={() => this.atualizaEstadoAccord(index)}>a</button>
-                    </td>
-                    {/* <td><button onClick={this.atualizaEstadoAccordion.bind(this)} value={consulta.id}>a</button></td> */}
+                    <div>
+                      {/* <div> */}
+                      <td>{consulta.pacienteNome}</td>
+                      <td>{consulta.medicoNome}</td>
+                      <td>{consulta.dataConsulta}</td>
+                      <td>{consulta.descricao.substring(0, 10) + "..."}</td>
+                      <td>{consulta.pacienteEmail.substring(0, 10) + "..."}</td>
+                      <td>{consulta.medicoEmail.substring(0, 10) + "..."}</td>
+                      {consulta.status == "Realizada" ||
+                      consulta.status == "Confirmada" ? (
+                        <td style={{ color: "#00ec00" }}>{consulta.status}</td>
+                      ) : consulta.status == "Cancelada" ||
+                        consulta.status == "Recusada" ? (
+                        <td style={{ color: "red" }}>{consulta.status}</td>
+                      ) : consulta.status == "Adiada" ? (
+                        <td style={{ color: "#dddd30" }}>{consulta.status}</td>
+                      ) : (
+                        <td style={{ color: "#2393ff" }}>{consulta.status}</td>
+                      )}
+                      <td>
+                      {consulta.accord === true ? (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver mais
+                          </button>
+                        ) : (
+                          <button
+                            className="btn-green-yellow"
+                            onClick={() => this.atualizaEstadoAccord(index)}
+                          >
+                            Ver menos
+                          </button>
+                        )}
+                      </td>
+                    </div>
+
+                    <div>
+                      {consulta.accord === true ? (
+                        <div />
+                      ) : (
+                        <div id="listar__accordion__div">
+                          <div class="listar__accordion__div__item">
+                            <h3>Paciente</h3>
+                            <br />
+                            <p>{consulta.pacienteNome}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>E-mail Paciente</h3>
+                            <br />
+                            <p>{consulta.pacienteEmail}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Médico</h3>
+                            <br />
+                            <p>{consulta.medicoNome}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>E-mail Médico</h3>
+                            <br />
+                            <p>{consulta.medicoEmail}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Data da consulta</h3>
+                            <br />
+                            <p>{consulta.dataConsulta}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
+                            <h3>Status</h3>
+                            <br />
+                            {consulta.status == "Realizada" ||
+                            consulta.status == "Confirmada" ? (
+                              <p style={{ color: "#00ec00" }}>
+                                {consulta.status}
+                              </p>
+                            ) : consulta.status == "Cancelada" ||
+                              consulta.status == "Recusada" ? (
+                              <p style={{ color: "red" }}>{consulta.status}</p>
+                            ) : consulta.status == "Adiada" ? (
+                              <p style={{ color: "#dddd30" }}>
+                                {consulta.status}
+                              </p>
+                            ) : (
+                              <p style={{ color: "#2393ff" }}>
+                                {consulta.status}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </tr>
                 );
               })}

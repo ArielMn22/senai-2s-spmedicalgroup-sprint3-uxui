@@ -66,6 +66,7 @@
 .tabela td {
     font-size: 1.5em;
     text-align: center;
+    padding-top: 30px;
 }
 
 .tabela tr {
@@ -85,4 +86,32 @@
 .tabela th, .tabela td {
     width: 200px;
     height: 90px;
+}
+
+#listar__accordion__div
+{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #d5d5d5;
+    height: 250px;
+    justify-content: center;
+}
+
+#listar__accordion__div > * {
+    /* margin: 10px 50px; */
+    margin: 15px 0px;
+}
+
+.listar__accordion__div__item
+{
+    text-align: center;
+    flex-basis: 350px;
+}
+
+.listar__accordion__div__item h3 {
+    font-size: 1.5em;
+}
+
+.listar__accordion__div__item p {
+    font-size: 1.4em;
 }
