@@ -6,10 +6,24 @@ export default class ListarConsultas extends Component {
     super();
 
     this.state = {
-      listaConsultas : [],
-      listaConsultasFiltrada : [],
-      accordion : true
+      listaConsultas: [],
+      listaConsultasFiltrada: [],
+      accordion: true
     };
+  }
+
+  addInitialAccordState() {
+    let novalista = this.state.listaConsultas.map(consulta => {
+      return {
+        ...consulta,
+        accord: true
+      };
+    });
+
+    console.log("Consultas com state accoedion:");
+    console.log(novalista);
+
+    this.setState({listaConsultasFiltrada : novalista});
   }
 
   componentDidMount() {
@@ -19,15 +33,17 @@ export default class ListarConsultas extends Component {
       .then(data => {
         this.setState({ listaConsultas: data.data });
         this.setState({ listaConsultasFiltrada: data.data });
+        
+        this.addInitialAccordState();
+        
         console.log(data);
       });
   }
 
-  atualizaEstadoAccordion()
-  {
+  atualizaEstadoAccordion() {
     this.setState(prevstate => ({
-      accordion : !prevstate.accordion
-    }))
+      accordion: !prevstate.accordion
+    }));
   }
 
   render() {
@@ -64,6 +80,7 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.descricao}</td>
                     <td>{consulta.dataConsulta}</td>
                     <td>R$ {consulta.preco}</td>
+
                     {consulta.status == "Realizada" ||
                     consulta.status == "Confirmada" ? (
                       <td style={{ color: "#00ec00" }}>{consulta.status}</td>
@@ -133,7 +150,7 @@ export default class ListarConsultas extends Component {
               <th>E-mail do paciente</th>
               <th>E-mail do médico</th>
               <th>Status</th>
-              <th></th>
+              <th />
             </tr>
           </table>
           <div className="tabela">
@@ -146,7 +163,7 @@ export default class ListarConsultas extends Component {
                     <td>{consulta.dataConsulta}</td>
                     <td>{consulta.descricao}</td>
                     <td>
-                      {this.state.accordion === true
+                      {consulta.accord === true
                         ? consulta.pacienteEmail.substring(0, 10) + "..."
                         : consulta.pacienteEmail}
                     </td>
