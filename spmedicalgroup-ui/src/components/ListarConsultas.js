@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import api from "../services/api";
 import "../assets/css/style.css";
+import ConsultasAccordion from "./ConsultasAccordion";
 
 export default class ListarConsultas extends Component {
   constructor() {
@@ -129,55 +130,7 @@ export default class ListarConsultas extends Component {
                       {consulta.accord === true ? (
                         <div />
                       ) : (
-                        <div id="listar__accordion__div">
-                          <div class="listar__accordion__div__item">
-                            <h3>Médico</h3>
-                            <br />
-                            <p>{consulta.medicoNome}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Especialidade</h3>
-                            <br />
-                            <p>{consulta.especialidade}</p>
-                          </div>
-
-                          <div class="listar__accordion__div__item">
-                            <h3>Observações</h3>
-                            <br />
-                            <p>{consulta.descricao}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Data da consulta</h3>
-                            <br />
-                            <p>{consulta.dataConsulta}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Preço</h3>
-                            <br />
-                            <p>R$ {consulta.preco}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Status</h3>
-                            <br />
-                            {consulta.status == "Realizada" ||
-                            consulta.status == "Confirmada" ? (
-                              <p style={{ color: "#00ec00" }}>
-                                {consulta.status}
-                              </p>
-                            ) : consulta.status == "Cancelada" ||
-                              consulta.status == "Recusada" ? (
-                              <p style={{ color: "red" }}>{consulta.status}</p>
-                            ) : consulta.status == "Adiada" ? (
-                              <p style={{ color: "#dddd30" }}>
-                                {consulta.status}
-                              </p>
-                            ) : (
-                              <p style={{ color: "#2393ff" }}>
-                                {consulta.status}
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                        <ConsultasAccordion consulta={consulta} />
                       )}
                     </div>
                   </tr>
@@ -244,51 +197,8 @@ export default class ListarConsultas extends Component {
                     <div>
                       {consulta.accord === true ? (
                         <div />
-                      ) : (
-                        <div id="listar__accordion__div">
-                          <div class="listar__accordion__div__item">
-                            <h3>Paciente</h3>
-                            <br />
-                            <p>{consulta.pacienteNome}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>E-mail Paciente</h3>
-                            <br />
-                            <p>{consulta.pacienteEmail}</p>
-                          </div>
-
-                          <div class="listar__accordion__div__item">
-                            <h3>Observações</h3>
-                            <br />
-                            <p>{consulta.descricao}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Data da consulta</h3>
-                            <br />
-                            <p>{consulta.dataConsulta}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Status</h3>
-                            <br />
-                            {consulta.status == "Realizada" ||
-                            consulta.status == "Confirmada" ? (
-                              <p style={{ color: "#00ec00" }}>
-                                {consulta.status}
-                              </p>
-                            ) : consulta.status == "Cancelada" ||
-                              consulta.status == "Recusada" ? (
-                              <p style={{ color: "red" }}>{consulta.status}</p>
-                            ) : consulta.status == "Adiada" ? (
-                              <p style={{ color: "#dddd30" }}>
-                                {consulta.status}
-                              </p>
-                            ) : (
-                              <p style={{ color: "#2393ff" }}>
-                                {consulta.status}
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                        ) : (
+                          <ConsultasAccordion consulta={consulta} />
                       )}
                     </div>
                   </tr>
@@ -360,59 +270,7 @@ export default class ListarConsultas extends Component {
                       {consulta.accord === true ? (
                         <div />
                       ) : (
-                        <div id="listar__accordion__div">
-                          <div class="listar__accordion__div__item">
-                            <h3>Paciente</h3>
-                            <br />
-                            <p>{consulta.pacienteNome}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>E-mail Paciente</h3>
-                            <br />
-                            <p>{consulta.pacienteEmail}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Médico</h3>
-                            <br />
-                            <p>{consulta.medicoNome}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>E-mail Médico</h3>
-                            <br />
-                            <p>{consulta.medicoEmail}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Observações</h3>
-                            <br />
-                            <p>{consulta.descricao}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Data da consulta</h3>
-                            <br />
-                            <p>{consulta.dataConsulta}</p>
-                          </div>
-                          <div class="listar__accordion__div__item">
-                            <h3>Status</h3>
-                            <br />
-                            {consulta.status == "Realizada" ||
-                            consulta.status == "Confirmada" ? (
-                              <p style={{ color: "#00ec00" }}>
-                                {consulta.status}
-                              </p>
-                            ) : consulta.status == "Cancelada" ||
-                              consulta.status == "Recusada" ? (
-                              <p style={{ color: "red" }}>{consulta.status}</p>
-                            ) : consulta.status == "Adiada" ? (
-                              <p style={{ color: "#dddd30" }}>
-                                {consulta.status}
-                              </p>
-                            ) : (
-                              <p style={{ color: "#2393ff" }}>
-                                {consulta.status}
-                              </p>
-                            )}
-                          </div>
-                        </div>
+                        <ConsultasAccordion consulta={consulta} />
                       )}
                     </div>
                   </tr>
