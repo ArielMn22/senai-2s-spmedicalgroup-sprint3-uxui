@@ -23,8 +23,26 @@ export default class ListarConsultas extends Component {
     console.log("Consultas com state accoedion:");
     console.log(novalista);
 
-    this.setState({listaConsultasFiltrada : novalista});
+    this.setState({ listaConsultasFiltrada: novalista });
   }
+
+  atualizaEstadoAccord = i => {
+    this.setState(state => {
+      const list = state.listaConsultasFiltrada.map((consulta, j) => {
+        if (i == j)
+        {
+          consulta.accord = !(consulta.accord) // Deverá trocar o sinal da propriedade
+          return consulta;
+        } else {
+          return consulta;
+        }
+      });
+
+      return {
+        list,
+      };
+    });
+  };
 
   componentDidMount() {
     api
@@ -33,18 +51,18 @@ export default class ListarConsultas extends Component {
       .then(data => {
         this.setState({ listaConsultas: data.data });
         this.setState({ listaConsultasFiltrada: data.data });
-        
+
         this.addInitialAccordState();
-        
+
         console.log(data);
       });
   }
 
-  atualizaEstadoAccordion() {
-    this.setState(prevstate => ({
-      accordion: !prevstate.accordion
-    }));
-  }
+  // atualizaEstadoAccordion() {
+  //   this.setState(prevstate => ({
+  //     accordion: !prevstate.accordion
+  //   }));
+  // }
 
   render() {
     let jwtDecode = require("jwt-decode");
@@ -155,7 +173,7 @@ export default class ListarConsultas extends Component {
           </table>
           <div className="tabela">
             <table>
-              {this.state.listaConsultas.map(consulta => {
+              {this.state.listaConsultasFiltrada.map((consulta, index) => {
                 return (
                   <tr>
                     <td>{consulta.pacienteNome}</td>
@@ -168,7 +186,7 @@ export default class ListarConsultas extends Component {
                         : consulta.pacienteEmail}
                     </td>
                     <td>
-                      {consulta.medicoEmail.length > 10
+                      {consulta.accord === true
                         ? consulta.medicoEmail.substring(0, 10) + "..."
                         : consulta.medicoEmail}
                     </td>
@@ -183,7 +201,10 @@ export default class ListarConsultas extends Component {
                     ) : (
                       <td style={{ color: "#2393ff" }}>{consulta.status}</td>
                     )}
-                    <td onClick={this.atualizaEstadoAccordion.bind(this)}>a</td>
+                    <td>
+                      <button onClick={() => this.atualizaEstadoAccord(index)}>a</button>
+                    </td>
+                    {/* <td><button onClick={this.atualizaEstadoAccordion.bind(this)} value={consulta.id}>a</button></td> */}
                   </tr>
                 );
               })}
