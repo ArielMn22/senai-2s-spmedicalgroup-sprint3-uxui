@@ -382,6 +382,11 @@ export default class ListarConsultas extends Component {
                             <p>{consulta.medicoEmail}</p>
                           </div>
                           <div class="listar__accordion__div__item">
+                            <h3>Observações</h3>
+                            <br />
+                            <p>{consulta.descricao}</p>
+                          </div>
+                          <div class="listar__accordion__div__item">
                             <h3>Data da consulta</h3>
                             <br />
                             <p>{consulta.dataConsulta}</p>
