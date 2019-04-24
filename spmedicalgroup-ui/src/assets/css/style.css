@@ -300,3 +300,12 @@ p {
   padding: 10px;
   box-shadow: 4px 4px 4px 4px #ccc;
 }
+
+.btn-red {
+  background-color: red;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 4px 4px 4px 4px #ccc;
+}

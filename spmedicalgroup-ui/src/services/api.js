@@ -19,6 +19,13 @@ export default {
       cadastrarConsulta: () =>
         axios.post(url + "consultas", consulta, {
           headers: { Authorization: auth }
+        }),
+
+      atualizarConsulta: () =>
+        axios.put(url + "consultas", consulta, {
+          headers: {
+            Authorization: auth
+          }
         })
     };
   },

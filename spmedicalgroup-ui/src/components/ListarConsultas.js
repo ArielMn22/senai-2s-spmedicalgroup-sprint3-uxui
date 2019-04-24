@@ -18,11 +18,12 @@ export default class ListarConsultas extends Component {
     let novalista = this.state.listaConsultas.map(consulta => {
       return {
         ...consulta,
-        accord: true
+        accord : true,
+        edit : false
       };
     });
 
-    console.log("Consultas com state accoedion:");
+    console.log("Consultas com state accordion e edit:");
     console.log(novalista);
 
     this.setState({ listaConsultasFiltrada: novalista });
@@ -45,18 +46,23 @@ export default class ListarConsultas extends Component {
     });
   };
 
-  componentDidMount() {
+  buscarListaConsultas()
+  {
     api
-      .consultas()
-      .getAll()
-      .then(data => {
-        this.setState({ listaConsultas: data.data });
-        this.setState({ listaConsultasFiltrada: data.data });
+    .consultas()
+    .getAll()
+    .then(data => {
+      this.setState({ listaConsultas: data.data });
+      this.setState({ listaConsultasFiltrada: data.data });
 
-        this.addInitialAccordState();
+      this.addInitialAccordState();
 
-        console.log(data);
-      });
+      console.log(data);
+    });
+  }
+
+  componentDidMount() {
+    this.buscarListaConsultas();
   }
 
   render() {
