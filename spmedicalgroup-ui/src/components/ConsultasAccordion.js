@@ -52,10 +52,11 @@ class ConsultasAccordion extends Component {
 
       this.atualizaEstadoEdit();
 
-      this.props.history.push("/minhasconsultas");
+      // this.props.history.push("/minhasconsultas");
+      this.props.consultaAtualizada(novaConsulta);
 
       // this.buscarListaConsultas();
-    // this.props.consulta.edit == false;
+      // this.props.consulta.edit == false;
   }
 
   atualizaEstadoEdit() {

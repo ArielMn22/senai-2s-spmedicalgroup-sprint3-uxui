@@ -18,8 +18,8 @@ export default class ListarConsultas extends Component {
     let novalista = this.state.listaConsultas.map(consulta => {
       return {
         ...consulta,
-        accord : true,
-        edit : false
+        accord: true,
+        edit: false
       };
     });
 
@@ -46,19 +46,45 @@ export default class ListarConsultas extends Component {
     });
   };
 
-  buscarListaConsultas()
-  {
+  atualizarListaConsultas(consultaAtualizada) {
+    console.log("consultaAtualizada");
+    console.log(consultaAtualizada);
+
+    this.buscarListaConsultas();
+
+    // let listaAntiga = this.state.listaConsultasFiltrada;
+
+    // let listaNova = [];
+
+    // listaAntiga.map(_consulta => {
+    //   if (_consulta.id == consultaAtualizada.id) {
+    //     _consulta.descricao = consultaAtualizada.observacoes;
+    //     _consulta.status = consultaAtualizada.idStatus;
+
+    //     listaNova.push(_consulta);
+    //   } else {
+    //     listaNova.push(_consulta);
+    //   }
+    // });
+
+    // console.log("listaNova");
+    // console.log(listaNova);
+
+    // this.setState({listaConsultasFiltrada : listaNova});
+  }
+
+  buscarListaConsultas() {
     api
-    .consultas()
-    .getAll()
-    .then(data => {
-      this.setState({ listaConsultas: data.data });
-      this.setState({ listaConsultasFiltrada: data.data });
+      .consultas()
+      .getAll()
+      .then(data => {
+        this.setState({ listaConsultas: data.data });
+        this.setState({ listaConsultasFiltrada: data.data });
 
-      this.addInitialAccordState();
+        this.addInitialAccordState();
 
-      console.log(data);
-    });
+        console.log(data);
+      });
   }
 
   componentDidMount() {
@@ -182,7 +208,7 @@ export default class ListarConsultas extends Component {
                         <td style={{ color: "#2393ff" }}>{consulta.status}</td>
                       )}
                       <td>
-                      {consulta.accord === true ? (
+                        {consulta.accord === true ? (
                           <button
                             className="btn-green-yellow"
                             onClick={() => this.atualizaEstadoAccord(index)}
@@ -203,8 +229,8 @@ export default class ListarConsultas extends Component {
                     <div>
                       {consulta.accord === true ? (
                         <div />
-                        ) : (
-                          <ConsultasAccordion consulta={consulta} />
+                      ) : (
+                        <ConsultasAccordion consulta={consulta} />
                       )}
                     </div>
                   </tr>
@@ -254,7 +280,7 @@ export default class ListarConsultas extends Component {
                         <td style={{ color: "#2393ff" }}>{consulta.status}</td>
                       )}
                       <td>
-                      {consulta.accord === true ? (
+                        {consulta.accord === true ? (
                           <button
                             className="btn-green-yellow"
                             onClick={() => this.atualizaEstadoAccord(index)}
@@ -276,7 +302,12 @@ export default class ListarConsultas extends Component {
                       {consulta.accord === true ? (
                         <div />
                       ) : (
-                        <ConsultasAccordion consulta={consulta} />
+                        <ConsultasAccordion
+                          consultaAtualizada={this.atualizarListaConsultas.bind(
+                            this
+                          )}
+                          consulta={consulta}
+                        />
                       )}
                     </div>
                   </tr>
