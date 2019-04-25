@@ -13,7 +13,7 @@ import CadastrarMedico from './pages/CadastrarMedico/CadastrarMedico';
 import CadastrarAdministrador from './pages/CadastrarAdministrador/CadastrarAdministrador';
 
 import { usuarioAutenticado } from './services/authUsuario';
-import { medicoAutenticado } from './services/authMedico';
+// import { medicoAutenticado } from './services/authMedico';
 import { administradorAutenticado } from './services/authAdministrador';
 import {Route, BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
 import Contato from './pages/Contato/Contato';
@@ -28,14 +28,14 @@ const UsuarioPermissao = ({ component : Component}) => (
     />
 );
 
-const MedicoPermissao = ({ component : Component}) => (
-    <Route
-        render = {props => medicoAutenticado() ?
-            (<Component {...props}/>) :
-            (<Redirect to={{ pathname : '/login', state: {from: props.location}}} />)
-        }
-    />
-);
+// const MedicoPermissao = ({ component : Component}) => (
+//     <Route
+//         render = {props => medicoAutenticado() ?
+//             (<Component {...props}/>) :
+//             (<Redirect to={{ pathname : '/login', state: {from: props.location}}} />)
+//         }
+//     />
+// );
 
 const AdministradorPermissao = ({ component : Component}) => (
     <Route

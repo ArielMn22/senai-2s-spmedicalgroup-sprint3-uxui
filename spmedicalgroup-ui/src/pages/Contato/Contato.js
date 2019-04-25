@@ -11,6 +11,7 @@ export default class Contato extends Component {
         <Cabecalho />
         <main>
           <section id="contato__banner">
+          <div id="contato__banner__layer"></div>
             <div id="contato__banner__text">
               <h1>Contate-nos</h1>
               <h2>Endereço</h2>

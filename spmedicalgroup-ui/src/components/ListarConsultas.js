@@ -32,7 +32,7 @@ export default class ListarConsultas extends Component {
   atualizaEstadoAccord = i => {
     this.setState(state => {
       const list = state.listaConsultasFiltrada.map((consulta, j) => {
-        if (i == j) {
+        if (i === j) {
           consulta.accord = !consulta.accord; // Deverá trocar o sinal da propriedade
           return consulta;
         } else {
@@ -57,7 +57,7 @@ export default class ListarConsultas extends Component {
     let listaNova = [];
 
     listaAntiga.map(_consulta => {
-      if (_consulta.id == consultaAtualizada.id) {
+      if (_consulta.id === consultaAtualizada.id) {
         _consulta.descricao = consultaAtualizada.observacoes;
         _consulta.status = consultaAtualizada.nomeStatus;
       }
@@ -100,7 +100,7 @@ export default class ListarConsultas extends Component {
     console.log("Array do this.state:");
     console.log(this.state.listaConsultas);
 
-    if (decode.tipoUsuario == "Paciente") {
+    if (decode.tipoUsuario === "Paciente") {
       return (
         <div>
           <table className="colunas ma-top-m">
@@ -126,13 +126,13 @@ export default class ListarConsultas extends Component {
                       <td>{consulta.descricao.substring(0, 10) + "..."}</td>
                       <td>{consulta.dataConsulta}</td>
                       <td>R$ {consulta.preco}</td>
-                      {consulta.status == "Realizada" ||
-                      consulta.status == "Confirmada" ? (
+                      {consulta.status === "Realizada" ||
+                      consulta.status === "Confirmada" ? (
                         <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                      ) : consulta.status == "Cancelada" ||
-                        consulta.status == "Recusada" ? (
+                      ) : consulta.status === "Cancelada" ||
+                        consulta.status === "Recusada" ? (
                         <td style={{ color: "red" }}>{consulta.status}</td>
-                      ) : consulta.status == "Adiada" ? (
+                      ) : consulta.status === "Adiada" ? (
                         <td style={{ color: "#dddd30" }}>{consulta.status}</td>
                       ) : (
                         <td style={{ color: "#2393ff" }}>{consulta.status}</td>
@@ -170,7 +170,7 @@ export default class ListarConsultas extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario == "Médico") {
+    } else if (decode.tipoUsuario === "Médico") {
       return (
         <div>
           <table className="colunas ma-top-m">
@@ -194,13 +194,13 @@ export default class ListarConsultas extends Component {
                       <td>{consulta.dataConsulta}</td>
                       <td>{consulta.descricao.substring(0, 10) + "..."}</td>
                       <td>{consulta.pacienteEmail.substring(0, 10) + "..."}</td>
-                      {consulta.status == "Realizada" ||
-                      consulta.status == "Confirmada" ? (
+                      {consulta.status === "Realizada" ||
+                      consulta.status === "Confirmada" ? (
                         <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                      ) : consulta.status == "Cancelada" ||
-                        consulta.status == "Recusada" ? (
+                      ) : consulta.status === "Cancelada" ||
+                        consulta.status === "Recusada" ? (
                         <td style={{ color: "red" }}>{consulta.status}</td>
-                      ) : consulta.status == "Adiada" ? (
+                      ) : consulta.status === "Adiada" ? (
                         <td style={{ color: "#dddd30" }}>{consulta.status}</td>
                       ) : (
                         <td style={{ color: "#2393ff" }}>{consulta.status}</td>
@@ -238,7 +238,7 @@ export default class ListarConsultas extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario == "Administrador") {
+    } else if (decode.tipoUsuario === "Administrador") {
       return (
         <div>
           <table className="colunas ma-top-m">
@@ -266,13 +266,13 @@ export default class ListarConsultas extends Component {
                       <td>{consulta.descricao.substring(0, 10) + "..."}</td>
                       <td>{consulta.pacienteEmail.substring(0, 10) + "..."}</td>
                       <td>{consulta.medicoEmail.substring(0, 10) + "..."}</td>
-                      {consulta.status == "Realizada" ||
-                      consulta.status == "Confirmada" ? (
+                      {consulta.status === "Realizada" ||
+                      consulta.status === "Confirmada" ? (
                         <td style={{ color: "#00ec00" }}>{consulta.status}</td>
-                      ) : consulta.status == "Cancelada" ||
-                        consulta.status == "Recusada" ? (
+                      ) : consulta.status === "Cancelada" ||
+                        consulta.status === "Recusada" ? (
                         <td style={{ color: "red" }}>{consulta.status}</td>
-                      ) : consulta.status == "Adiada" ? (
+                      ) : consulta.status === "Adiada" ? (
                         <td style={{ color: "#dddd30" }}>{consulta.status}</td>
                       ) : (
                         <td style={{ color: "#2393ff" }}>{consulta.status}</td>

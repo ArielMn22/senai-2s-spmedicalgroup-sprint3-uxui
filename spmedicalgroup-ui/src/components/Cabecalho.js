@@ -20,14 +20,14 @@ class Cabecalho extends Component {
       let jwtDecode = require("jwt-decode"); // Importando o jwt-decode
       let decode = jwtDecode(token);
 
-      if (decode.tipoUsuario == "Paciente") {
+      if (decode.tipoUsuario === "Paciente") {
         return (
           <div>
             <header>
-              <nav id="top-bar" class="degrade">
-                <div id="logo" class="flex-container">
+              <nav id="top-bar" className="degrade">
+                <div id="logo" className="flex-container">
                   <Link to="/">
-                    <div class="logo-img">
+                    <div className="logo-img">
                       <img src={Logo} alt="Logo da SP Medical Group" />
                     </div>
                   </Link>
@@ -35,34 +35,34 @@ class Cabecalho extends Component {
                   <p>SP Medical Group</p>
                 </div>
                 <div id="menu">
-                  <ul class="flex-container">
+                  <ul className="flex-container">
                     <li>
                       <Link to="/">
-                        <i class="fas fa-home" />
+                        <i className="fas fa-home" />
                         Home
                       </Link>
                     </li>
                     <li>
                       <Link to="/sobrenos">
-                        <i class="fas fa-book" />
+                        <i className="fas fa-book" />
                         Sobre Nós
                       </Link>
                     </li>
                     <li>
                       <Link to="/contatenos">
-                        <i class="fas fa-phone" />
+                        <i className="fas fa-phone" />
                         Contato
                       </Link>
                     </li>
                     <li>
                       <Link to="/minhasconsultas">
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Minhas Consultas
                       </Link>
                     </li>
                     <li>
                       <Link onClick={this.deslogar.bind(this)}>
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Sair
                       </Link>
                     </li>
@@ -72,14 +72,14 @@ class Cabecalho extends Component {
             </header>
           </div>
         );
-      } else if (decode.tipoUsuario == "Médico") {
+      } else if (decode.tipoUsuario === "Médico") {
         return (
           <div>
             <header>
-              <nav id="top-bar" class="degrade">
-                <div id="logo" class="flex-container">
+              <nav id="top-bar" className="degrade">
+                <div id="logo" className="flex-container">
                   <Link to="/">
-                    <div class="logo-img">
+                    <div className="logo-img">
                       <img src={Logo} alt="Logo da SP Medical Group" />
                     </div>
                   </Link>
@@ -87,34 +87,34 @@ class Cabecalho extends Component {
                   <p>SP Medical Group</p>
                 </div>
                 <div id="menu">
-                  <ul class="flex-container">
+                  <ul className="flex-container">
                     <li>
                       <Link to="/">
-                        <i class="fas fa-home" />
+                        <i className="fas fa-home" />
                         Home
                       </Link>
                     </li>
                     <li>
                       <Link to="/sobrenos">
-                        <i class="fas fa-book" />
+                        <i className="fas fa-book" />
                         Sobre Nós
                       </Link>
                     </li>
                     <li>
                       <Link to="/contatenos">
-                        <i class="fas fa-phone" />
+                        <i className="fas fa-phone" />
                         Contato
                       </Link>
                     </li>
                     <li>
                       <Link to="/minhasconsultas">
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Minhas Consultas
                       </Link>
                     </li>
                     <li>
                       <Link onClick={this.deslogar.bind(this)}>
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Sair
                       </Link>
                     </li>
@@ -124,14 +124,14 @@ class Cabecalho extends Component {
             </header>
           </div>
         );
-      } else if (decode.tipoUsuario == "Administrador") {
+      } else if (decode.tipoUsuario === "Administrador") {
         return (
           <div>
             <header>
-              <nav id="top-bar" class="degrade">
-                <div id="logo" class="flex-container">
+              <nav id="top-bar" className="degrade">
+                <div id="logo" className="flex-container">
                   <Link to="/">
-                    <div class="logo-img">
+                    <div className="logo-img">
                       <img src={Logo} alt="Logo da SP Medical Group" />
                     </div>
                   </Link>
@@ -139,53 +139,53 @@ class Cabecalho extends Component {
                   <p>SP Medical Group</p>
                 </div>
                 <div id="menu">
-                  <ul class="flex-container">
+                  <ul className="flex-container">
                     <li>
                       <Link to="/">
-                        <i class="fas fa-home" />
+                        <i className="fas fa-home" />
                         Home
                       </Link>
                     </li>
                     <li>
                       <Link to="/sobrenos">
-                        <i class="fas fa-book" />
+                        <i className="fas fa-book" />
                         Sobre Nós
                       </Link>
                     </li>
                     <li>
                       <Link to="/contatenos">
-                        <i class="fas fa-phone" />
+                        <i className="fas fa-phone" />
                         Contato
                       </Link>
                     </li>
                     <li>
                       <Link to="/cadastrarmedico">
-                        <i class="fas fa-phone" />
+                        <i className="fas fa-phone" />
                         Cadastrar Médico
                       </Link>
                     </li>
 
                     <li>
                       <Link to="/cadastraradministrador">
-                        <i class="fas fa-phone" />
+                        <i className="fas fa-phone" />
                         Cadastrar Administrador
                       </Link>
                     </li>
                     <li>
                       <Link to="/cadastrarconsulta">
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Cadastrar Consulta
                       </Link>
                     </li>
                     <li>
                       <Link to="/minhasconsultas">
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Todas Consultas
                       </Link>
                     </li>
                     <li>
                       <Link onClick={this.deslogar.bind(this)}>
-                        <i class="fas fa-user" />
+                        <i className="fas fa-user" />
                         Sair
                       </Link>
                     </li>
@@ -200,10 +200,10 @@ class Cabecalho extends Component {
       return (
         <div>
           <header>
-            <nav id="top-bar" class="degrade">
-              <div id="logo" class="flex-container">
-                <Link href="index.html">
-                  <div class="logo-img">
+            <nav id="top-bar" className="degrade">
+              <div id="logo" className="flex-container">
+                <Link to="index.html">
+                  <div className="logo-img">
                     <img src={Logo} alt="Logo da SP Medical Group" />
                   </div>
                 </Link>
@@ -211,28 +211,28 @@ class Cabecalho extends Component {
                 <p>SP Medical Group</p>
               </div>
               <div id="menu">
-                <ul class="flex-container">
+                <ul className="flex-container">
                   <li>
                     <Link to="/">
-                      <i class="fas fa-home" />
+                      <i className="fas fa-home" />
                       Home
                     </Link>
                   </li>
                   <li>
                     <Link to="/sobrenos">
-                      <i class="fas fa-book" />
+                      <i className="fas fa-book" />
                       Sobre Nós
                     </Link>
                   </li>
                   <li>
                     <Link to="/contatenos">
-                      <i class="fas fa-phone" />
+                      <i className="fas fa-phone" />
                       Contato
                     </Link>
                   </li>
                   <li>
                     <Link to="/login">
-                      <i class="fas fa-user" />
+                      <i className="fas fa-user" />
                       Login
                     </Link>
                   </li>

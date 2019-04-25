@@ -16,7 +16,7 @@ class App extends Component {
         <main>
           <section id="banner">
             <h1>A clínica que cuida da sua família!</h1>
-            <Link to="/contato" class="green-btn">Fale Conosco</Link>
+            <Link to="/contato" className="green-btn">Fale Conosco</Link>
           </section>
           <section id="areaPaciente">
             <div id="imgPaciente">
@@ -28,40 +28,40 @@ class App extends Component {
             <div id="areaPaciente__text">
               <h2>Área do paciente</h2>
               <p>Deseja ver suas consultas ou resultados de exames?</p>
-              <Link to="/login" class="green-btn">
+              <Link to="/login" className="green-btn">
                 Clique aqui!
               </Link>
             </div>
           </section>
       
-          <div class="separador-img" />
+          <div className="separador-img" />
 
-          <section id="nossasInstalacoes" class="pa-all-g">
+          <section id="nossasInstalacoes" className="pa-all-g">
             <h2>Nossas Instalações</h2>
 
-            <div class="instalacao">
+            <div className="instalacao">
               <img src={Lobby1} alt="Lobby do hospital." />
               <p>Excelentes instalações para garantir o seu conforto...</p>
             </div>
 
-            <div class="instalacao">
+            <div className="instalacao">
               <p>...E total agilidade.</p>
               <img src={Lobby2} alt="Lobby do hospital." />
             </div>
           </section>
-          <section id="localizacao" class="pa-all-g">
+          <section id="localizacao" className="pa-all-g">
             <h2>Localização</h2>
-            <div class="localizacao-conteudo pa-all-g">
-              <div class="google-api">
+            <div className="localizacao-conteudo pa-all-g">
+              <div className="google-api">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.887132913111!2d-46.648477084454164!3d-23.536561566563364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5843deade6e3%3A0x124f377d06c7e71f!2sAlameda+Bar%C3%A3o+de+Limeira%2C+539+-+Campos+El%C3%ADseos%2C+S%C3%A3o+Paulo+-+SP%2C+01202-001!5e0!3m2!1spt-PT!2sbr!4v1555096014275!5m2!1spt-PT!2sbr"
                   width="800"
                   height="600"
-                  frameborder="0"
-                  allowfullscreen
+                  frameBorder="0"
+                  allowFullScreen
                 />
               </div>
-              <div class="localizacao-text">
+              <div className="localizacao-text">
                 <h3>Endereço</h3>
                 <p>Alameda Barão de Limeira, 539.</p>
                 <h3>Contato</h3>

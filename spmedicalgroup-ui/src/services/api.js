@@ -1,5 +1,3 @@
-import React, { Component } from "react";
-import { AsyncSeriesHook } from "tapable";
 import axios from "axios";
 
 const url = "http://localhost:5000/api/";

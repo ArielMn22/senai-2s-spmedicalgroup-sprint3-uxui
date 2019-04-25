@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import api from "../services/api";
-import {buscarListaConsultas} from '../components/ListarConsultas';
 import { withRouter } from "react-router-dom";
-import { PassThrough } from "stream";
-
 
 class ConsultasAccordion extends Component {
   constructor(props) {
@@ -56,7 +53,7 @@ class ConsultasAccordion extends Component {
 
       // Buscando status por id // Para mandar para o Parent
       this.state.listaStatus.forEach(status => {
-        if (status.id == novaConsulta.idStatus)
+        if (status.id === novaConsulta.idStatus)
         {
           novaConsulta.nomeStatus = status.nome;
         } 
@@ -66,7 +63,7 @@ class ConsultasAccordion extends Component {
       this.props.consultaAtualizada(novaConsulta);
 
       // this.buscarListaConsultas();
-      // this.props.consulta.edit == false;
+      // this.props.consulta.edit === false;
   }
 
   atualizaEstadoEdit() {
@@ -131,13 +128,13 @@ class ConsultasAccordion extends Component {
           <div class="listar__accordion__div__item">
             <h3>Status</h3>
             <br />
-            {consulta.status == "Realizada" ||
-            consulta.status == "Confirmada" ? (
+            {consulta.status === "Realizada" ||
+            consulta.status === "Confirmada" ? (
               <p style={{ color: "#00ec00" }}>{consulta.status}</p>
-            ) : consulta.status == "Cancelada" ||
-              consulta.status == "Recusada" ? (
+            ) : consulta.status === "Cancelada" ||
+              consulta.status === "Recusada" ? (
               <p style={{ color: "red" }}>{consulta.status}</p>
-            ) : consulta.status == "Adiada" ? (
+            ) : consulta.status === "Adiada" ? (
               <p style={{ color: "#dddd30" }}>{consulta.status}</p>
             ) : (
               <p style={{ color: "#2393ff" }}>{consulta.status}</p>
@@ -145,7 +142,7 @@ class ConsultasAccordion extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario == "Médico") {
+    } else if (decode.tipoUsuario === "Médico") {
       return (
         <div id="listar__accordion__div">
           <div class="listar__accordion__div__item">
@@ -172,13 +169,13 @@ class ConsultasAccordion extends Component {
           <div class="listar__accordion__div__item">
             <h3>Status</h3>
             <br />
-            {consulta.status == "Realizada" ||
-            consulta.status == "Confirmada" ? (
+            {consulta.status === "Realizada" ||
+            consulta.status === "Confirmada" ? (
               <p style={{ color: "#00ec00" }}>{consulta.status}</p>
-            ) : consulta.status == "Cancelada" ||
-              consulta.status == "Recusada" ? (
+            ) : consulta.status === "Cancelada" ||
+              consulta.status === "Recusada" ? (
               <p style={{ color: "red" }}>{consulta.status}</p>
-            ) : consulta.status == "Adiada" ? (
+            ) : consulta.status === "Adiada" ? (
               <p style={{ color: "#dddd30" }}>{consulta.status}</p>
             ) : (
               <p style={{ color: "#2393ff" }}>{consulta.status}</p>
@@ -192,7 +189,7 @@ class ConsultasAccordion extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario == "Administrador") {
+    } else if (decode.tipoUsuario === "Administrador") {
       if (consulta.edit === true) {
         return (
           <div id="listar__accordion__div">
@@ -302,13 +299,13 @@ class ConsultasAccordion extends Component {
             <div class="listar__accordion__div__item">
               <h3>Status</h3>
               <br />
-              {consulta.status == "Realizada" ||
-              consulta.status == "Confirmada" ? (
+              {consulta.status === "Realizada" ||
+              consulta.status === "Confirmada" ? (
                 <p style={{ color: "#00ec00" }}>{consulta.status}</p>
-              ) : consulta.status == "Cancelada" ||
-                consulta.status == "Recusada" ? (
+              ) : consulta.status === "Cancelada" ||
+                consulta.status === "Recusada" ? (
                 <p style={{ color: "red" }}>{consulta.status}</p>
-              ) : consulta.status == "Adiada" ? (
+              ) : consulta.status === "Adiada" ? (
                 <p style={{ color: "#dddd30" }}>{consulta.status}</p>
               ) : (
                 <p style={{ color: "#2393ff" }}>{consulta.status}</p>

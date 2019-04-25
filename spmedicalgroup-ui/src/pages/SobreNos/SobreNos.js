@@ -11,6 +11,7 @@ export default class SobreNos extends Component {
           <Cabecalho />
         <main>
           <section id="sobre__banner">
+          <div id="sobre__banner__layer"></div>
             <div id="sobre__banner__text">
               <h1>Sobre nós</h1>
               <p>

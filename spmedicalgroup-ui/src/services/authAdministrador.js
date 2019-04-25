@@ -4,7 +4,7 @@ export const administradorAutenticado = () => {
     let jwtDecode = require("jwt-decode"); // Importando o jwt-decode
     let decode = jwtDecode(token);
 
-    if (decode.tipoUsuario == "Administrador") {
+    if (decode.tipoUsuario === "Administrador") {
       return true;
     } else {
       return false;
