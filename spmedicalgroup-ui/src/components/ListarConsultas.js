@@ -50,8 +50,6 @@ export default class ListarConsultas extends Component {
     console.log("consultaAtualizada");
     console.log(consultaAtualizada);
 
-    // this.buscarListaConsultas();
-
     let listaAntiga = this.state.listaConsultasFiltrada;
 
     let listaNova = [];
@@ -68,7 +66,7 @@ export default class ListarConsultas extends Component {
     console.log("listaNova");
     console.log(listaNova);
 
-    this.setState({listaConsultasFiltrada : listaNova});
+    this.setState({ listaConsultasFiltrada: listaNova });
   }
 
   buscarListaConsultas() {
@@ -120,7 +118,6 @@ export default class ListarConsultas extends Component {
                 return (
                   <tr>
                     <div>
-                      {/* <div> */}
                       <td>{consulta.medicoNome}</td>
                       <td>{consulta.especialidade}</td>
                       <td>{consulta.descricao.substring(0, 10) + "..."}</td>
@@ -189,7 +186,6 @@ export default class ListarConsultas extends Component {
                 return (
                   <tr>
                     <div>
-                      {/* <div> */}
                       <td>{consulta.pacienteNome}</td>
                       <td>{consulta.dataConsulta}</td>
                       <td>{consulta.descricao.substring(0, 10) + "..."}</td>
@@ -228,7 +224,12 @@ export default class ListarConsultas extends Component {
                       {consulta.accord === true ? (
                         <div />
                       ) : (
-                        <ConsultasAccordion consulta={consulta} />
+                        <ConsultasAccordion
+                          consultaAtualizada={this.atualizarListaConsultas.bind(
+                            this
+                          )}
+                          consulta={consulta}
+                        />
                       )}
                     </div>
                   </tr>
@@ -259,7 +260,6 @@ export default class ListarConsultas extends Component {
                 return (
                   <tr>
                     <div>
-                      {/* <div> */}
                       <td>{consulta.pacienteNome}</td>
                       <td>{consulta.medicoNome}</td>
                       <td>{consulta.dataConsulta}</td>

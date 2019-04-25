@@ -53,22 +53,16 @@ class ConsultasAccordion extends Component {
 
       // Buscando status por id // Para mandar para o Parent
       this.state.listaStatus.forEach(status => {
-        if (status.id === novaConsulta.idStatus)
+        if (status.id == novaConsulta.idStatus)
         {
           novaConsulta.nomeStatus = status.nome;
         } 
       });
 
-      // this.props.history.push("/minhasconsultas");
       this.props.consultaAtualizada(novaConsulta);
-
-      // this.buscarListaConsultas();
-      // this.props.consulta.edit === false;
   }
 
   atualizaEstadoEdit() {
-    // event.preventDefault();
-
     let consulta = this.state.consultaAntiga;
 
     console.log("Atualiza estado edit:");
@@ -142,54 +136,7 @@ class ConsultasAccordion extends Component {
           </div>
         </div>
       );
-    } else if (decode.tipoUsuario === "Médico") {
-      return (
-        <div id="listar__accordion__div">
-          <div class="listar__accordion__div__item">
-            <h3>Paciente</h3>
-            <br />
-            <p>{consulta.pacienteNome}</p>
-          </div>
-          <div class="listar__accordion__div__item">
-            <h3>E-mail Paciente</h3>
-            <br />
-            <p>{consulta.pacienteEmail}</p>
-          </div>
-
-          <div class="listar__accordion__div__item">
-            <h3>Observações</h3>
-            <br />
-            <p>{consulta.descricao}</p>
-          </div>
-          <div class="listar__accordion__div__item">
-            <h3>Data da consulta</h3>
-            <br />
-            <p>{consulta.dataConsulta}</p>
-          </div>
-          <div class="listar__accordion__div__item">
-            <h3>Status</h3>
-            <br />
-            {consulta.status === "Realizada" ||
-            consulta.status === "Confirmada" ? (
-              <p style={{ color: "#00ec00" }}>{consulta.status}</p>
-            ) : consulta.status === "Cancelada" ||
-              consulta.status === "Recusada" ? (
-              <p style={{ color: "red" }}>{consulta.status}</p>
-            ) : consulta.status === "Adiada" ? (
-              <p style={{ color: "#dddd30" }}>{consulta.status}</p>
-            ) : (
-              <p style={{ color: "#2393ff" }}>{consulta.status}</p>
-            )}
-          </div>
-
-          <div className="listar__accordion__div__item">
-            <button className="btn-green-yellow" type="submit">
-              Editar
-            </button>
-          </div>
-        </div>
-      );
-    } else if (decode.tipoUsuario === "Administrador") {
+    } else if (decode.tipoUsuario === "Administrador" || decode.tipoUsuario === "Médico") {
       if (consulta.edit === true) {
         return (
           <div id="listar__accordion__div">
@@ -225,7 +172,6 @@ class ConsultasAccordion extends Component {
                     value={this.state.novaDescricao}
                     onChange={this.atualizaEstadoDescricao.bind(this)}
                   />
-                  {/* <span className="text-label">Observações</span> */}
                 </label>
               </div>
               <div class="listar__accordion__div__item">
@@ -249,7 +195,6 @@ class ConsultasAccordion extends Component {
                       return <option value={status.id}>{status.nome}</option>;
                     })}
                   </select>
-                  {/* <span className="select-label">Status</span> */}
                 </label>{" "}
               </div>
 
