@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import api from "../services/api";
 import {buscarListaConsultas} from '../components/ListarConsultas';
 import { withRouter } from "react-router-dom";
+import { PassThrough } from "stream";
 
 
 class ConsultasAccordion extends Component {
@@ -35,7 +36,8 @@ class ConsultasAccordion extends Component {
     let novaConsulta = {
       id : consulta.id,
       observacoes: this.state.novaDescricao,
-      idStatus: this.state.novoStatus
+      idStatus: this.state.novoStatus,
+      nomeStatus : ""
     };
 
     console.log(novaConsulta);
@@ -51,6 +53,14 @@ class ConsultasAccordion extends Component {
       });
 
       this.atualizaEstadoEdit();
+
+      // Buscando status por id // Para mandar para o Parent
+      this.state.listaStatus.forEach(status => {
+        if (status.id == novaConsulta.idStatus)
+        {
+          novaConsulta.nomeStatus = status.nome;
+        } 
+      });
 
       // this.props.history.push("/minhasconsultas");
       this.props.consultaAtualizada(novaConsulta);

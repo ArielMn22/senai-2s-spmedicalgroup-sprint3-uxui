@@ -50,27 +50,25 @@ export default class ListarConsultas extends Component {
     console.log("consultaAtualizada");
     console.log(consultaAtualizada);
 
-    this.buscarListaConsultas();
+    // this.buscarListaConsultas();
 
-    // let listaAntiga = this.state.listaConsultasFiltrada;
+    let listaAntiga = this.state.listaConsultasFiltrada;
 
-    // let listaNova = [];
+    let listaNova = [];
 
-    // listaAntiga.map(_consulta => {
-    //   if (_consulta.id == consultaAtualizada.id) {
-    //     _consulta.descricao = consultaAtualizada.observacoes;
-    //     _consulta.status = consultaAtualizada.idStatus;
+    listaAntiga.map(_consulta => {
+      if (_consulta.id == consultaAtualizada.id) {
+        _consulta.descricao = consultaAtualizada.observacoes;
+        _consulta.status = consultaAtualizada.nomeStatus;
+      }
 
-    //     listaNova.push(_consulta);
-    //   } else {
-    //     listaNova.push(_consulta);
-    //   }
-    // });
+      listaNova.push(_consulta);
+    });
 
-    // console.log("listaNova");
-    // console.log(listaNova);
+    console.log("listaNova");
+    console.log(listaNova);
 
-    // this.setState({listaConsultasFiltrada : listaNova});
+    this.setState({listaConsultasFiltrada : listaNova});
   }
 
   buscarListaConsultas() {
