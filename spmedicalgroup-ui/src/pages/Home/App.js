@@ -20,10 +20,10 @@ class App extends Component {
           </section>
           <section id="areaPaciente">
             <div id="imgPaciente">
-              <img
+              {/* <img
                 src={Woman}
                 alt="Imagem de uma paciente do hospital."
-              />
+              /> */}
             </div>
             <div id="areaPaciente__text">
               <h2>Área do paciente</h2>

@@ -31,6 +31,13 @@
     display: flex;
 }
 
+#imgPaciente {
+    background-image: url("../imgs/woman.jpg");
+    background-size: cover;
+    width: 50%;
+    background-position: center;
+}
+
 #areaPaciente img {
     height: 100%;
 }
